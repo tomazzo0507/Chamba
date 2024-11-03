@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+    list-style: none;
+    text-decoration: none;
+}
+
+body{
+
+    background-image: linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 0.8)
+    ),url("/assets/fondoNetflix.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cont{
+    width: 40%;
+    height: 500px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: transparent;
+    backdrop-filter: blur(70px);
+    border: solid 2px white;
+}
+
+.cont h1{
+    color: white;
+    font-weight: 900;
+    font-size: 50px;
+}
+
+.cont p{
+    color: white;
+    font-size: 13px;
+    margin-top: -.5rem;
+    margin-bottom: 2rem;
+}
+
+.cont h3{
+    color: white;
+    font-size: 13px;
+    margin-top: -.5rem;
+    margin-bottom: 1rem;
+    font-weight: 400;
+}
+
+.cont .input{
+    width: 80%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    padding: 0 .7rem 0 1rem;
+    margin-bottom: .5rem;
+}
+
+.cont .input input{
+    width: 100%;
+    padding: 1rem 1rem 1rem .5rem;
+    border: none;
+    outline: none;
+}
+
+.ups{
+    width: 80%;
+    margin-top: 2rem;
+    text-align: center;
+    text-decoration: wavy;
+    cursor: pointer;
+}
+
+.cont button{
+    width: 50%;
+    padding: .8rem 2rem;
+    border-radius: 10px;
+    font-size: 15px;
+    cursor: pointer;
+    background-color: white;
+    border: solid 2px white;
+    font-weight: 600;
+    color: black;
+    transition: all .2s ease;
+}
+
+.cont button:hover{
+    background-color: transparent;
+    color: white;
+}
+
