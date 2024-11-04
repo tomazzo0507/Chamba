@@ -11,6 +11,12 @@
     --color-verde: #edf8da;
     --color-texto-verde: #abcb74;
 
+    --color-rojo: #fee9e9;
+    --color-texto-rojo: #ff6863;
+
+    --color-mora: #ffd8f6;
+    --color-texto-mora: #cb6ab2;
+
     --box-shadow: 1px 1px 1rem rgba(0, 0, 0, 0.318);
 }
 
@@ -582,12 +588,15 @@ table tbody tr th p.activo {
 
 .filtro {
     position: fixed;
-    bottom: -100vw;
+    bottom: -500vw;
     right: 0;
     width: 100vw;
-    background-color: var(--color-grey-white);
-    box-shadow: var(--box-shadow);
+    height: 100vh;
+    background-color: transparent;
     transition: all .5s;
+    display: flex;
+    align-items: end;
+    border: none;
 }
 
 .filtro.active {
@@ -596,12 +605,23 @@ table tbody tr th p.activo {
 
 .filtro .content-filtro {
     position: relative;
+    width: 100vw;
+    background-color: var(--color-grey-white);
+    box-shadow: var(--box-shadow);
 }
 
 .filtro .content-filtro i#close_filtro {
     position: absolute;
     top: 20px;
     right: 20px;
+    cursor: pointer;
+    color: var(--color-black);
+}
+
+.filtro .content-filtro i#clean_filtro {
+    position: absolute;
+    right: 18px;
+    top: 40px;
     cursor: pointer;
     color: var(--color-black);
 }
@@ -639,7 +659,8 @@ table tbody tr th p.activo {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 2rem;
+    gap: 1rem;
+    cursor: pointer;
 }
 
 .filtro .content-filtro .inputs-filtro .input:nth-child(2) p {
@@ -650,8 +671,9 @@ table tbody tr th p.activo {
 .filtro .content-filtro .inputs-filtro .input:nth-child(2) img {
     aspect-ratio: 1/1;
     object-fit: cover;
-    width: 50px;
+    width: 45px;
     border-radius: 50%;
+    cursor: pointer;
 }
 
 .filtro .content-filtro .inputs-filtro .input:last-child {
@@ -660,6 +682,7 @@ table tbody tr th p.activo {
     justify-content: center;
     padding-left: 5rem;
     gap: 1rem;
+    margin-right: 1rem;
 }
 
 .filtro .content-filtro .inputs-filtro .input:last-child p {
@@ -668,10 +691,208 @@ table tbody tr th p.activo {
 }
 
 .filtro .content-filtro .inputs-filtro .input:last-child h3 {
+    cursor: pointer;
+}
+
+.filtro .content-filtro .inputs-filtro .input:last-child h3.activo {
     font-size: 13px;
     padding: .7rem 2rem;
     background-color: var(--color-verde);
     color: var(--color-texto-verde);
+    border-radius: 10px;
+}
+
+.filtro .content-filtro .inputs-filtro .input:last-child h3.inactivo {
+    font-size: 13px;
+    padding: .7rem 2rem;
+    background-color: var(--color-rojo);
+    color: var(--color-texto-rojo);
+    border-radius: 10px;
+}
+
+.filtro .content-filtro .inputs-filtro .input:last-child h3.danado {
+    font-size: 13px;
+    padding: .7rem 2rem;
+    background-color: var(--color-mora);
+    color: var(--color-texto-mora);
+    border-radius: 10px;
+}
+
+.filtro .content-filtro .inputs-filtro .input:last-child h3.search {
+    font-size: 13px;
+    padding: .7rem 2rem;
+    background-color: var(--color-grey);
+    color: var(--color-grey-white);
+    border-radius: 10px;
+}
+
+.select_service {
+    position: fixed;
+    bottom: -500vw;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    transition: all .5s ease;
+    z-index: 0;
+}
+
+.select_service.active {
+    bottom: 0;
+}
+
+.select_service .content_select-service {
+    background-color: var(--color-grey-white);
+    box-shadow: var(--box-shadow);
+    border-radius: 20px 20px 0 0;
+    width: 400px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+    position: relative;
+    gap: 2rem;
+}
+
+.select_service .content_select-service h3 {
+    color: var(--color-black);
+    font-size: 16px;
+}
+
+.select_service .content_select-service span {
+    display: block;
+    position: absolute;
+    width: 50px;
+    height: 4px;
+    background-color: var(--color-grey);
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 100px;
+}
+
+.select_service .content_select-service .img_select-service {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: .5rem;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.select_service .content_select-service .img_select-service div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.select_service .content_select-service .img_select-service div:nth-child(2),
+.select_service .content_select-service .img_select-service div:nth-child(5) {
+    justify-content: center;
+}
+
+.select_service .content_select-service .img_select-service div:nth-child(1),
+.select_service .content_select-service .img_select-service div:nth-child(4) {
+    justify-content: end;
+}
+
+.select_service .content_select-service .img_select-service img {
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    width: 70px;
+    border-radius: 50%;
+    transition: all .2s ease;
+    cursor: pointer;
+}
+
+.select_service .content_select-service .img_select-service img:hover {
+    border-radius: 20%;
+}
+
+.select_estado {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    bottom: -500vw;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    background-color: transparent;
+    transition: all .5s ease;
+}
+
+.select_estado.active {
+    bottom: 0;
+}
+
+.select_estado .content_select-estado {
+    width: 400px;
+    height: 170px;
+    background-color: var(--color-grey-white);
+    box-shadow: var(--box-shadow);
+    border-radius: 20px 20px 0 0;
+    position: relative;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+}
+
+.select_estado .content_select-estado span {
+    display: block;
+    position: absolute;
+    width: 50px;
+    height: 4px;
+    background-color: var(--color-grey);
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 100px;
+}
+
+.select_estado .content_select-estado .text_select-estado {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .5rem;
+    margin-bottom: 2rem;
+}
+
+.select_estado .content_select-estado .text_select-estado p {
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.select_estado .content_select-estado .text_select-estado p#activo {
+    font-size: 13px;
+    font-weight: 800;
+    padding: .7rem 2rem;
+    background-color: var(--color-verde);
+    color: var(--color-texto-verde);
+    border-radius: 10px;
+}
+
+.select_estado .content_select-estado .text_select-estado p#inactivo {
+    font-size: 13px;
+    font-weight: 800;
+    padding: .7rem 2rem;
+    background-color: var(--color-rojo);
+    color: var(--color-texto-rojo);
+    border-radius: 10px;
+}
+
+.select_estado .content_select-estado .text_select-estado p#danado {
+    font-size: 13px;
+    font-weight: 800;
+    padding: .7rem 2rem;
+    background-color: var(--color-mora);
+    color: var(--color-texto-mora);
+    border-radius: 10px;
 }
 
 @media (width < 1100px) {
@@ -751,6 +972,27 @@ table tbody tr th p.activo {
 
     .filtro .content-filtro .inputs-filtro {
         padding: 1rem 2rem;
+    }
+
+    .select_service .content_select-service h3 {
+        margin-top: 4rem;
+    }
+}
+
+@media (width < 500px) {
+    .select_service .content_select-service {
+        height: 380px;
+        align-items: center;
+        justify-content: start;
+    }
+
+    .select_estado .content_select-estado {
+        align-items: start;
+        height: 250px;
+    }
+
+    .select_estado .content_select-estado .text_select-estado {
+        margin-top: 3rem;
     }
 }
 

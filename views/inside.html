@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Administrador</title>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="/styles/inside.css">
     <script src="https://kit.fontawesome.com/460146b1b8.js" crossorigin="anonymous"></script>
@@ -80,7 +80,7 @@
     <div class="header">
         <div class="left_header">
             <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" placeholder="Busca por nombre, correo, servicio...">
+            <input type="text" placeholder="Busca por nombre, correo, estado...">
         </div>
         <div class="right_header">
             <img src="/assets/admin.png" alt>
@@ -183,16 +183,55 @@
             <div class="inputs-filtro">
                 <div class="input">
                     <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" placeholder="Busca por nombre, correo, servicio...">
+                    <input type="text" class="input_filtro" placeholder="Busca por nombre, correo, estado...">
                 </div>
-                <div class="input">
+                <div class="input" id="open_service">
                     <p>Servicio: </p>
-                    <img src="/assets/logo_netflix.png" alt="">
+                    <img src="/assets/fondoNetflix.png" alt="" class="img_service">
                 </div>
                 <div class="input">
                     <p>Estado:</p>
-                    <h3>Activo</h3>
+                    <h3 class="search" id="search">Buscar</h3>
                 </div>
+            </div>
+            <i class="fa-solid fa-trash" id="clean_filtro"></i>
+        </div>
+    </div>
+
+    <div class="select_service">
+        <div class="content_select-service">
+            <span></span>
+            <h3>Selecciona el servicio: </h3>
+            <div class="img_select-service">
+                <div>
+                    <img src="/assets/logo_disney.jpg" alt="" class="disney">
+                </div>
+                <div>
+                    <img src="/assets/logo_apple.png" alt="" class="apple">
+                </div>
+                <div>
+                    <img src="/assets/logo_hbo.png" alt="" class="hbo">
+                </div>
+                <div>
+                    <img src="/assets/logo_netflix.png" alt="" class="netflix">
+                </div>
+                <div>
+                    <img src="/assets/logo_paramount.png" alt="" class="paramount">
+                </div>
+                <div>
+                    <img src="/assets/logo_prime.png" alt="" class="prime">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="select_estado">
+        <div class="content_select-estado">
+            <span></span>
+            <div class="text_select-estado">
+                <p id="activo">Activo</p>
+                <p id="inactivo">Inactivo</p>
+                <p id="danado">Dañado</p>
             </div>
         </div>
     </div>
