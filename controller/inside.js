@@ -48,3 +48,11 @@ close_filtro.addEventListener('click', () => {
     filtro.classList.remove('active')
     btnFilter.classList.remove('active')
 })
+
+// out
+
+var out = document.querySelector('#out')
+
+out.addEventListener("click", () => {
+    location.href = "/index.html"
+})
