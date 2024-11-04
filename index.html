@@ -13,20 +13,18 @@
         <p>Inicia sesión con tus credenciales: </p>
         <div class="input">
             <i class="fa-solid fa-user fa-bounce"></i>
-            <input class="user" type="text" id="username" placeholder="Usuario">
+            <input class="user" type="text" id="username" placeholder="Usuario" autocomplete="off">
         </div>
         
         <div class="input">
             <i class="fa-solid fa-lock fa-shake"></i>
-            <input class="contra" type="text" id="contra" placeholder="Contraseña">
-            <i class="fa-solid fa-eye"></i>
+            <input class="contra" type="password" id="contra" placeholder="Contraseña" autocomplete="off">
+            <i class="fa-solid fa-eye" id="eye"></i>
         </div>
         <br>
         <h3 class="ups">He olvidado mi contraseña</h3>
 
-        <button class="login" type="button" href="/views/inside.html">
-            Ingresar
-        </button>
+        <button class="login" type="button" href="/views/inside.html">Ingresar</button>
     </div>
 <script src="/controller/login.js"></script>
 </body>
