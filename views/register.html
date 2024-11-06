@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" href="/styles/register.css">
+    <script src="https://kit.fontawesome.com/460146b1b8.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="cont">
+        <h1>REGISTRAR</h1>
+        <p>Registra un nuevo Administrador</p>
+        <div class="input">
+            <i class="fa-solid fa-envelope fa-bounce"></i>
+            <input class="correo" type="email" id="username" placeholder="Correo" autocomplete="off">
+        </div>
+
+        <div class="input">
+            <i class="fa-solid fa-user fa-bounce"></i>
+            <input class="nombre" type="text" id="name" placeholder="Nombre completo" autocomplete="off">
+        </div>
+        
+        <div class="input">
+            <i class="fa-solid fa-lock fa-shake"></i>
+            <input class="contra" type="password" id="contra" placeholder="Contraseña" autocomplete="off">
+            <i class="fa-solid fa-eye" id="eye"></i>
+        </div>
+
+        <div class="input">
+            <i class="fa-solid fa-lock fa-shake"></i>
+            <input class="contra_confir" type="password" id="contra_confir" placeholder="Confirmar contraseña" autocomplete="off">
+        </div>
+        
+        <br>
+
+        <button class="login" type="button" href="/views/inside.html">Registrar</button>
+    </div>
+<script src="/controller/register.js"></script>
+</body>
+</html>

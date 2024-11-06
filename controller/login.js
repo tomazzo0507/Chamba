@@ -28,5 +28,22 @@ eye.addEventListener('click', () => {
     }
 })
 
+// remember
+
+var btnUps = document.querySelector(".ups")
+var container_ups = document.querySelector(".container_ups")
+
+btnUps.addEventListener("click", () => {
+    container_ups.classList.toggle("active")
+
+    window.addEventListener('click', event => {
+        if (event.target == container_ups) {
+            container_ups.classList.remove('active')
+        }
+    })
+})
+
+
+
 
 
