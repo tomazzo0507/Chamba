@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro Usuarios</title>
+    <link rel="stylesheet" href="/styles/register_user.css">
+    <script src="https://kit.fontawesome.com/460146b1b8.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="cont">
+        <h1>REGISTRAR</h1>
+        <p>Registra un nuevo Usuario</p>
+        <div class="input">
+            <i class="fa-solid fa-envelope fa-bounce"></i>
+            <input class="correo" type="email" id="username" placeholder="Correo" autocomplete="off">
+        </div>
+
+        <div class="input">
+            <i class="fa-solid fa-envelope fa-bounce"></i>
+            <input class="nombre" type="email" id="padre" placeholder="Correo Padre" autocomplete="off">
+        </div>
+
+        <div class="input">
+            <i class="fa-solid fa-user fa-bounce"></i>
+            <input class="nombre" type="text" id="name" placeholder="Nombre completo" autocomplete="off">
+        </div>
+
+        <div class="input">
+            <i class="fa-brands fa-amazon"></i>
+            <input type="text" class="servicio" id="servicio" placeholder="servicio" autocomplete="off">
+            <i class="fa-solid fa-trash" id="clean_service"></i>
+        </div>
+
+        <div class="input">
+            <i class="fa-solid fa-earth-americas"></i>
+            <input class="pais" type="text" id="pais" placeholder="pais" autocomplete="off">
+        </div>
+        
+        <br>
+
+        <button class="login" type="button" href="/views/inside.html">Registrar</button>
+    </div>
+
+    <div class="select_service">
+        <div class="content_select-service">
+            <span></span>
+            <h3>Selecciona el servicio: </h3>
+            <div class="img_select-service">
+                <div>
+                    <img src="/assets/logo_disney.jpg" alt="" class="disney">
+                </div>
+                <div>
+                    <img src="/assets/logo_apple.png" alt="" class="apple">
+                </div>
+                <div>
+                    <img src="/assets/logo_hbo.png" alt="" class="hbo">
+                </div>
+                <div>
+                    <img src="/assets/logo_netflix.png" alt="" class="netflix">
+                </div>
+                <div>
+                    <img src="/assets/logo_paramount.png" alt="" class="paramount">
+                </div>
+                <div>
+                    <img src="/assets/logo_prime.png" alt="" class="prime">
+                </div>
+                <div>
+                    <img src="/assets/logo_crunchyroll.png" alt="" class="crunchyroll">
+                </div>
+                <div>
+                    <img src="/assets/logo_directv.png" alt="" class="directv">
+                </div>
+                <div>
+                    <img src="/assets/logo_disneypremium.png" alt="" class="disneypremium">
+                </div>
+                <div>
+                    <img src="/assets/logo_spotify.jpg" alt="" class="spotify">
+                </div>
+                <div>
+                    <img src="/assets/logo_vix.jpg" alt="" class="vix">
+                </div>
+                <div>
+                    <img src="/assets/logo_youtube.png" alt="" class="youtube">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="select_pais">
+        <div class="content_select-pais">
+            <span></span>
+            <h3>Selecciona el pais: </h3>
+            <div class="img_select-pais">
+                <div>
+                    <img src="/assets/colombia.png" alt="" class="colombia">
+                </div>
+                <div>
+                    <img src="/assets/argentina.svg" alt="" class="argentina">
+                </div>
+                <div>
+                    <img src="/assets/peru.png" alt="" class="peru">
+                </div>
+                <div>
+                    <img src="/assets/brasil.png" alt="" class="brasil">
+                </div>
+                <div>
+                    <img src="/assets/espana.png" alt="" class="espana">
+                </div>
+                <div>
+                    <img src="/assets/usa.png" alt="" class="usa">
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="/controller/register_user.js"></script>
+</body>
+</html>

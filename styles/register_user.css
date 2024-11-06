@@ -1,0 +1,367 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+    list-style: none;
+    text-decoration: none;
+}
+
+body {
+    background-image: linear-gradient(0deg,
+            rgba(0, 0, 0, 0.8),
+            rgba(0, 0, 0, 0.7)), url("/assets/fondoNetflix.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cont {
+    width: 40%;
+    height: 500px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: transparent;
+    backdrop-filter: blur(70px);
+    border: solid 2px white;
+    transition: all .2s ease;
+}
+
+.cont h1 {
+    color: white;
+    font-weight: 900;
+    font-size: 50px;
+}
+
+.cont p {
+    color: white;
+    font-size: 13px;
+    margin-top: -.5rem;
+    margin-bottom: 2rem;
+}
+
+.cont h3 {
+    color: white;
+    font-size: 13px;
+    margin-top: -.5rem;
+    margin-bottom: 1rem;
+    font-weight: 400;
+}
+
+.cont .input i {
+    font-size: 12px;
+}
+
+.cont .input i#clean_service {
+    cursor: pointer;
+}
+
+.cont .input i#eye {
+    font-size: 15px;
+    position: relative;
+    cursor: pointer;
+}
+
+.cont .input i#eye::after {
+    content: '';
+    position: absolute;
+    top: 7px;
+    left: -2px;
+    display: block;
+    width: 20px;
+    height: 1.2px;
+    background-color: rgb(0, 0, 0);
+    transform: rotate(45deg);
+    transition: all .2s ease;
+}
+
+.cont .input i#eye.active::after {
+    top: 0;
+    width: 0;
+}
+
+.cont .input {
+    width: 80%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    padding: 0 .7rem 0 1rem;
+    margin-bottom: .5rem;
+}
+
+.cont .input input {
+    width: 100%;
+    padding: 1rem 1rem 1rem .5rem;
+    border: none;
+    outline: none;
+}
+
+.cont .input:nth-child(6) input,
+.cont .input:nth-child(7) input {
+    cursor: pointer;
+}
+
+.ups {
+    width: 80%;
+    margin-top: 2rem;
+    text-align: center;
+    text-decoration: wavy;
+    cursor: pointer;
+}
+
+.cont button {
+    width: 50%;
+    padding: .8rem 2rem;
+    border-radius: 10px;
+    font-size: 13px;
+    cursor: pointer;
+    background-color: white;
+    border: solid 2px white;
+    font-weight: 600;
+    color: black;
+    transition: all .2s ease;
+}
+
+.cont button:hover {
+    background-color: transparent;
+    color: white;
+}
+
+.select_service {
+    position: fixed;
+    bottom: -500vw;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    transition: all .5s ease;
+    z-index: 0;
+}
+
+.select_service.active {
+    bottom: 0;
+}
+
+.select_service .content_select-service {
+    box-shadow: 1px 1px 1rem rgba(0, 0, 0, 0.768);
+    background-color: white;
+    border-radius: 20px 20px 0 0;
+    width: 400px;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+    position: relative;
+    gap: 2rem;
+}
+
+.select_service .content_select-service h3 {
+    color: black;
+    font-size: 16px;
+}
+
+.select_service .content_select-service span {
+    display: block;
+    position: absolute;
+    width: 50px;
+    height: 4px;
+    background-color: rgb(177, 177, 177);
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 100px;
+}
+
+.select_service .content_select-service .img_select-service {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: .5rem;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.select_service .content_select-service .img_select-service div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.select_service .content_select-service .img_select-service div:nth-child(2),
+.select_service .content_select-service .img_select-service div:nth-child(5),
+.select_service .content_select-service .img_select-service div:nth-child(8),
+.select_service .content_select-service .img_select-service div:nth-child(11) {
+    justify-content: center;
+}
+
+.select_service .content_select-service .img_select-service div:nth-child(1),
+.select_service .content_select-service .img_select-service div:nth-child(4),
+.select_service .content_select-service .img_select-service div:nth-child(7),
+.select_service .content_select-service .img_select-service div:nth-child(10) {
+    justify-content: end;
+}
+
+.select_service .content_select-service .img_select-service img {
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    width: 70px;
+    border-radius: 50%;
+    transition: all .2s ease;
+    cursor: pointer;
+}
+
+.select_service .content_select-service .img_select-service img:hover {
+    border-radius: 20%;
+}
+
+.select_pais {
+    position: fixed;
+    bottom: -500vw;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    transition: all .5s ease;
+    z-index: 0;
+}
+
+.select_pais.active {
+    bottom: 0;
+}
+
+.select_pais .content_select-pais {
+    box-shadow: 1px 1px 1rem rgba(0, 0, 0, 0.768);
+    background-color: white;
+    border-radius: 20px 20px 0 0;
+    width: 400px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+    position: relative;
+    gap: 2rem;
+}
+
+.select_pais .content_select-pais h3 {
+    color: black;
+    font-size: 16px;
+}
+
+.select_pais .content_select-pais span {
+    display: block;
+    position: absolute;
+    width: 50px;
+    height: 4px;
+    background-color: rgb(177, 177, 177);
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 100px;
+}
+
+.select_pais .content_select-pais .img_select-pais {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: .5rem;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.select_pais .content_select-pais .img_select-pais div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.select_pais .content_select-pais .img_select-pais div:nth-child(2),
+.select_pais .content_select-pais .img_select-pais div:nth-child(5),
+.select_pais .content_select-pais .img_select-pais div:nth-child(8),
+.select_pais .content_select-pais .img_select-pais div:nth-child(11) {
+    justify-content: center;
+}
+
+.select_pais .content_select-pais .img_select-pais div:nth-child(1),
+.select_pais .content_select-pais .img_select-pais div:nth-child(4),
+.select_pais .content_select-pais .img_select-pais div:nth-child(7),
+.select_pais .content_select-pais .img_select-pais div:nth-child(10) {
+    justify-content: end;
+}
+
+.select_pais .content_select-pais .img_select-pais img {
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    width: 70px;
+    border-radius: 50%;
+    transition: all .2s ease;
+    cursor: pointer;
+}
+
+.select_pais .content_select-pais .img_select-pais img:hover {
+    border-radius: 20%;
+}
+
+@media (height < 534px) {
+    body {
+        display: flex;
+        align-items: start;
+        height: 100%;
+    }
+
+    .cont {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+}
+
+@media (width < 1100px) {
+    .cont {
+        width: 60%;
+    }
+}
+
+@media (width < 800px) {
+    .cont {
+        width: 80%;
+    }
+}
+
+@media (width < 600px) {
+    .cont {
+        width: 90%;
+    }
+}
+
+@media (width < 500px) {
+    .cont h1 {
+        font-size: 30px;
+    }
+
+    .cont p {
+        margin-top: 0;
+        margin-bottom: 2rem;
+    }
+
+    .cont .input {
+        width: 90%;
+    }
+
+    .cont button {
+        width: 60%;
+    }
+}

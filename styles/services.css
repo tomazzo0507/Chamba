@@ -238,6 +238,8 @@ body {
     padding: 0 0 0 7rem;
     background-color: var(--color-grey-white);
     margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
 }
 
 .header .left_header {
@@ -637,10 +639,12 @@ table tbody tr th p.reserva {
 }
 
 .services{
+    height: 100vh;
     padding: 1rem 2rem 1rem 7rem;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: -5rem;
 }
 
 .imagenes{
@@ -650,7 +654,6 @@ table tbody tr th p.reserva {
     justify-content: center;
     width: 100%;
     gap: 2rem;
-    margin-bottom: 2rem;
 }
 
 .imagenes .img{
@@ -680,8 +683,19 @@ table tbody tr th p.reserva {
     50%{
         transform: translateX(-5px);
     }
+    70% {
+        transform: translateX(-5px);
+    }
     100%{
         transform: translateX(0);
+    }
+}
+
+@media (height < 600px) {
+    .services{
+        align-items: start;
+        height: 100%;
+        margin-top: -2rem;
     }
 }
 
@@ -697,6 +711,16 @@ table tbody tr th p.reserva {
 }
 
 @media (width < 1000px) {
+    .services{
+        align-items: start;
+        height: 100%;
+        margin-top: 0rem;
+    }
+
+    .imagenes {
+        margin-bottom: 2rem;
+    }
+    
     .imagenes .img{
         display: grid;
         grid-template-columns: 1fr 1fr;

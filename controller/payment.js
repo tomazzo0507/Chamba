@@ -33,6 +33,7 @@ palanca.addEventListener('click', () => {
 var btnService = document.querySelector("#services")
 var btnInicio = document.querySelector("#inicio")
 var btnCobros = document.querySelector("#payment")
+var btnUsers = document.querySelector("#users")
 
 btnService.addEventListener("click", () => {
     location.href = "/views/services.html"
@@ -46,10 +47,42 @@ btnCobros.addEventListener("click", () => {
     location.href = "/views/payment.html"
 })
 
+btnUsers.addEventListener('click', () => {
+    window.open("/views/register_users.html", "_blank");
+})
+
 // out
 
 var out = document.querySelector('#out')
 
 out.addEventListener("click", () => {
     location.href = "/index.html"
+})
+
+// pay
+
+var pay = document.querySelector('#pay')
+var payAll = document.querySelector('#payAll')
+
+var service = document.querySelector('.select_service')
+
+pay.addEventListener('click', () => {
+    service.classList.toggle('active')
+
+    window.addEventListener('click', event => {
+        if (event.target == service) {
+            service.classList.remove('active')
+        }
+    })
+    
+})
+
+payAll.addEventListener('click', () => {
+    service.classList.toggle('active')
+
+    window.addEventListener('click', event => {
+        if (event.target == service) {
+            service.classList.remove('active')
+        }
+    })
 })

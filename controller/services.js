@@ -23,6 +23,7 @@ x.addEventListener('click', () => {
 var btnService = document.querySelector("#services")
 var btnInicio = document.querySelector("#inicio")
 var btnCobros = document.querySelector("#payment")
+var btnUsers = document.querySelector("#users")
 
 btnService.addEventListener("click", () => {
     location.href = "/views/services.html"
@@ -34,6 +35,10 @@ btnInicio.addEventListener("click", () => {
 
 btnCobros.addEventListener("click", () => {
     location.href = "/views/payment.html"
+})
+
+btnUsers.addEventListener('click', () => {
+    window.open("/views/register_users.html", "_blank");
 })
 
 // Dark Mode

@@ -82,6 +82,7 @@ clean_filtro.addEventListener('click', () => {
 var btnService = document.querySelector("#services")
 var btnInicio = document.querySelector("#inicio")
 var btnCobros = document.querySelector("#payment")
+var btnUsers = document.querySelector("#users")
 
 btnService.addEventListener("click", () => {
     location.href = "/views/services.html"
@@ -95,6 +96,10 @@ btnCobros.addEventListener("click", () => {
     location.href = "/views/payment.html"
 })
 
+btnUsers.addEventListener('click', () => {
+    window.open("/views/register_users.html", "_blank");
+})
+
 var service = document.querySelector('.select_service')
 var btnService = document.querySelector('#open_service')
 
@@ -104,6 +109,12 @@ var hbo = document.querySelector('.hbo')
 var netflix = document.querySelector('.netflix')
 var paramount = document.querySelector('.paramount')
 var prime = document.querySelector('.prime')
+var crunchyroll = document.querySelector('.crunchyroll')
+var directv = document.querySelector('.directv')
+var disneypremium = document.querySelector('.disneypremium')
+var spotify = document.querySelector('.spotify')
+var vix = document.querySelector('.vix')
+var youtube = document.querySelector('.youtube')
 
 btnService.addEventListener('click', () => {
     filtro.classList.remove('active')
@@ -165,6 +176,54 @@ btnService.addEventListener('click', () => {
         service.classList.remove('active')
 
         img_service.src = "/assets/logo_prime.png"
+    })
+
+    crunchyroll.addEventListener('click', () => {
+        filtro.classList.add('active')
+        btnFilter.classList.add('active')
+        service.classList.remove('active')
+
+        img_service.src = "/assets/logo_crunchyroll.png"
+    })
+
+    directv.addEventListener('click', () => {
+        filtro.classList.add('active')
+        btnFilter.classList.add('active')
+        service.classList.remove('active')
+
+        img_service.src = "/assets/logo_directv.png"
+    })
+
+    disneypremium.addEventListener('click', () => {
+        filtro.classList.add('active')
+        btnFilter.classList.add('active')
+        service.classList.remove('active')
+
+        img_service.src = "/assets/logo_disneypremium.png"
+    })
+
+    spotify.addEventListener('click', () => {
+        filtro.classList.add('active')
+        btnFilter.classList.add('active')
+        service.classList.remove('active')
+
+        img_service.src = "/assets/logo_spotify.jpg"
+    })
+
+    vix.addEventListener('click', () => {
+        filtro.classList.add('active')
+        btnFilter.classList.add('active')
+        service.classList.remove('active')
+
+        img_service.src = "/assets/logo_vix.jpg"
+    })
+
+    youtube.addEventListener('click', () => {
+        filtro.classList.add('active')
+        btnFilter.classList.add('active')
+        service.classList.remove('active')
+
+        img_service.src = "/assets/logo_youtube.png"
     })
 })
 
