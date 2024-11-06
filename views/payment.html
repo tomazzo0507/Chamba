@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administrador</title>
+    <title>Cobros</title>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    <link rel="stylesheet" href="/styles/inside.css">
+    <link rel="stylesheet" href="/styles/payment.css">
     <script src="https://kit.fontawesome.com/460146b1b8.js" crossorigin="anonymous"></script>
 </head>
 
@@ -20,11 +20,11 @@
         <div class="menu">
             <hr>
             <div class="top_menu">
-                <div id="inicio" class="module active">
+                <div id="inicio" class="module">
                     <i class="ph-fill ph-house-simple"></i>
                     <p>Inicio</p>
                 </div>
-                <div id="payment" class="module">
+                <div id="payment" class="module active">
                     <i class="fa-solid fa-credit-card"></i>
                     <p>Cobros</p>
                 </div>
@@ -91,6 +91,10 @@
         </div>
     </div>
     <div class="default">
+        <div class="pay_all">
+            <i class="fa-solid fa-wallet fa-bounce"></i>
+            <p>Cobrar todos</p>
+        </div>
         <table>
             <thead>
                 <tr>
@@ -114,7 +118,7 @@
                         </div>
                     </th>
                     <th>
-                        <p class="activo">Activo</p>
+                        <p class="inactivo">Cobrar</p>
 
                     </th>
                 </tr>
@@ -128,7 +132,7 @@
                         </div>
                     </th>
                     <th>
-                        <p class="activo">Activo</p>
+                        <p class="inactivo">Cobrar</p>
                     </th>
                 </tr>
                 <tr>
@@ -144,7 +148,7 @@
                         </div>
                     </th>
                     <th>
-                        <p class="activo">Activo</p>
+                        <p class="inactivo">Cobrar</p>
                     </th>
                 </tr>
                 <tr>
@@ -158,7 +162,7 @@
                         </div>
                     </th>
                     <th>
-                        <p class="activo">Activo</p>
+                        <p class="inactivo">Cobrar</p>
                     </th>
                 </tr>
                 <tr>
@@ -171,91 +175,14 @@
                         </div>
                     </th>
                     <th>
-                        <p id="estado" class="activo">Activo</p>
+                        <p class="inactivo">Cobrar</p>
                     </th>
                 </tr>
             </tbody>
         </table>
     </div>
 
-
-
-    <div class="filtro">
-        <div class="content-filtro">
-            <i class="fa-solid fa-close" id="close_filtro"></i>
-            <div class="inputs-filtro">
-                <div class="input">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" class="input_filtro" placeholder="Busca por nombre, correo, estado...">
-                </div>
-                <div class="input" id="open_service">
-                    <p>Servicio: </p>
-                    <img src="/assets/fondoNetflix.png" alt="" class="img_service">
-                </div>
-                <div class="input">
-                    <p>Estado:</p>
-                    <h3 class="search" id="search">Buscar</h3>
-                </div>
-            </div>
-            <i class="fa-solid fa-trash" id="clean_filtro"></i>
-        </div>
-    </div>
-
-    <div class="select_service">
-        <div class="content_select-service">
-            <span></span>
-            <h3>Selecciona el servicio: </h3>
-            <div class="img_select-service">
-                <div>
-                    <img src="/assets/logo_disney.jpg" alt="" class="disney">
-                </div>
-                <div>
-                    <img src="/assets/logo_apple.png" alt="" class="apple">
-                </div>
-                <div>
-                    <img src="/assets/logo_hbo.png" alt="" class="hbo">
-                </div>
-                <div>
-                    <img src="/assets/logo_netflix.png" alt="" class="netflix">
-                </div>
-                <div>
-                    <img src="/assets/logo_paramount.png" alt="" class="paramount">
-                </div>
-                <div>
-                    <img src="/assets/logo_prime.png" alt="" class="prime">
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="select_estado">
-        <div class="content_select-estado">
-            <span></span>
-            <div class="text_select-estado">
-                <p id="activo">Activo</p>
-                <p id="inactivo">Inactivo</p>
-                <p id="danado">Dañado</p>
-                <p id="disponible">Disponible</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="change_estado">
-        <div class="content_change-estado">
-            <i class="fa-solid fa-x"></i>
-            <h3>Selecciona el estado: </h3>
-            <div class="p_change-estado">
-                <p id="activo">Activo</p>
-                <p id="inactivo">Inactivo</p>
-                <p id="danado">Dañado</p>
-                <p id="disponible">Disponible</p>
-                <p id="reserva">Reservado</p>
-            </div>
-        </div>
-    </div>
-
-    <i class="fa-solid fa-filter" id="filter"></i>
-    <script src="/controller/inside.js"></script>
+    <script src="/controller/payment.js"></script>
 </body>
 
 </html>

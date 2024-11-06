@@ -77,7 +77,23 @@ clean_filtro.addEventListener('click', () => {
     estado_fitro.className = "search"
 })
 
-// service 
+// side menu
+
+var btnService = document.querySelector("#services")
+var btnInicio = document.querySelector("#inicio")
+var btnCobros = document.querySelector("#payment")
+
+btnService.addEventListener("click", () => {
+    location.href = "/views/services.html"
+})
+
+btnInicio.addEventListener("click", () => {
+    location.href = "/views/inside.html"
+})
+
+btnCobros.addEventListener("click", () => {
+    location.href = "/views/payment.html"
+})
 
 var service = document.querySelector('.select_service')
 var btnService = document.querySelector('#open_service')
