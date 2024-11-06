@@ -10,12 +10,14 @@ btn.addEventListener("click", () => {
     sidebar.classList.toggle("small");
     filtro.classList.remove('active')
     btnFilter.classList.remove('active')
+    changeEstado.classList.remove('active')
 })
 
 close.addEventListener('click', () => {
     sidebar.classList.add("active");
     btnFilter.classList.remove('active')
     filtro.classList.remove('active')
+    changeEstado.classList.remove('active')
 })
 
 x.addEventListener('click', () => {
@@ -40,8 +42,9 @@ var filtro = document.querySelector('.filtro')
 var close_filtro = document.querySelector('#close_filtro')
 
 btnFilter.addEventListener('click', () => {
-    filtro.classList.toggle('active')
+    sidebar.classList.remove("active");
     btnFilter.classList.toggle('active')
+    filtro.classList.toggle('active')
 
     service.classList.remove('active')
 
@@ -154,9 +157,10 @@ btnService.addEventListener('click', () => {
 var estado = document.querySelector('.select_estado')
 var btnEstado = document.querySelector('#search')
 
-var activo = document.querySelector('#activo')
-var inactivo = document.querySelector('#inactivo')
-var danado = document.querySelector('#danado')
+var activo = document.querySelector('.content_select-estado #activo')
+var inactivo = document.querySelector('.content_select-estado #inactivo')
+var danado = document.querySelector('.content_select-estado #danado')
+var disponible = document.querySelector('.content_select-estado #disponible')
 
 btnEstado.addEventListener('click', () => {
     filtro.classList.remove('active')
@@ -170,7 +174,7 @@ btnEstado.addEventListener('click', () => {
             btnFilter.classList.add('active')
             estado.classList.remove('active')
         }
-    })  
+    })
 
     activo.addEventListener('click', () => {
         btnEstado.textContent = "Activo"
@@ -195,6 +199,14 @@ btnEstado.addEventListener('click', () => {
         btnFilter.classList.add('active')
         estado.classList.remove('active')
     })
+
+    disponible.addEventListener('click', () => {
+        btnEstado.textContent = "Disponible"
+        btnEstado.className = "disponible"
+        filtro.classList.add('active')
+        btnFilter.classList.add('active')
+        estado.classList.remove('active')
+    })
 })
 
 // out
@@ -203,4 +215,56 @@ var out = document.querySelector('#out')
 
 out.addEventListener("click", () => {
     location.href = "/index.html"
+})
+
+// Change estado
+
+var btnEstado2 = document.querySelector('#estado')
+var changeEstado = document.querySelector('.change_estado')
+var close_changeEstado = document.querySelector('.content_change-estado i')
+
+var estadoActivo = document.querySelector('.p_change-estado #activo')
+var estadoInactivo = document.querySelector('.p_change-estado #inactivo')
+var estadoDanado = document.querySelector('.p_change-estado #danado')
+var estadoDisponible = document.querySelector('.p_change-estado #disponible')
+var estadoReserva = document.querySelector('.p_change-estado #reserva')
+
+btnEstado2.addEventListener('click', () => {
+    changeEstado.classList.toggle('active')
+
+    close_changeEstado.addEventListener('click', () => {
+        changeEstado.classList.remove('active')
+    })
+
+    window.addEventListener('click', event => {
+        if (event.target == changeEstado) {
+            changeEstado.classList.remove('active')
+        }
+    })
+
+    estadoActivo.addEventListener('click', () => {
+        btnEstado2.className = "activo"
+        btnEstado2.textContent = "Activo"
+        changeEstado.classList.remove('active')
+    })
+    estadoInactivo.addEventListener('click', () => {
+        btnEstado2.className = "inactivo"
+        btnEstado2.textContent = "Inactivo"
+        changeEstado.classList.remove('active')
+    })
+    estadoDanado.addEventListener('click', () => {
+        btnEstado2.className = "danado"
+        btnEstado2.textContent = "Dañada"
+        changeEstado.classList.remove('active')
+    })
+    estadoDisponible.addEventListener('click', () => {
+        btnEstado2.className = "disponible"
+        btnEstado2.textContent = "Disponible"
+        changeEstado.classList.remove('active')
+    })
+    estadoReserva.addEventListener('click', () => {
+        btnEstado2.className = "reserva"
+        btnEstado2.textContent = "Reservada"
+        changeEstado.classList.remove('active')
+    })
 })
