@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="/styles/register.css">
     <script src="https://kit.fontawesome.com/460146b1b8.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
     <div class="cont">
         <h1>REGISTRAR</h1>
@@ -29,7 +31,8 @@
 
         <div class="input">
             <i class="fa-solid fa-lock fa-shake"></i>
-            <input class="contra_confir" type="password" id="contra_confir" placeholder="Confirmar contraseña" autocomplete="off">
+            <input class="contra_confir" type="password" id="contra_confir" placeholder="Confirmar contraseña"
+                autocomplete="off">
         </div>
 
         <br>
@@ -37,11 +40,37 @@
         <button id="register" class="regitrar" type="button" href="/views/inside.html">Registrar</button>
     </div>
 
+    <div class="out">
+        <div class="fire">
+            <div class="fire-left">
+                <div class="main-fire"></div>
+                <div class="particle-fire"></div>
+            </div>
+            <div class="fire-center">
+                <div class="main-fire"></div>
+                <div class="particle-fire"></div>
+            </div>
+            <div class="fire-right">
+                <div class="main-fire"></div>
+                <div class="particle-fire"></div>
+            </div>
+            <div class="fire-bottom">
+                <div class="main-fire"></div>
+            </div>
+        </div>
+        <div class="text_out">
+            <h1>Inicia sesion</h1>
+            <p>No has iniciado sesion de manera correcta</p>
+            <a href="/index.html">Iniciar sesion</a>
+        </div>
+    </div>
+
     <div class="toast">
         <i class="fa-solid fa-triangle-exclamation fa-shake"></i>
         <p class="p_toast"></p>
     </div>
-    
+
     <script src="/controller/register.js" type="module"></script>
 </body>
+
 </html>

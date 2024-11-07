@@ -200,6 +200,31 @@ body {
     cursor: pointer;
 }
 
+.toast{
+    position: fixed;
+    top: 30px;
+    right: -100vw;
+    width: 300px;
+    height: 70px;
+    padding: 1rem 2rem;
+    border-radius: 20px 0 0 20px;
+    background-color: #e15a5a;
+    transition: all 1s ease;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    color: white;
+    gap: 1rem;
+}
+
+.toast p:not(.p_toast){
+    color: #872222;
+}
+
+.toast.active{
+    right: 0;
+}
+
 @media (height < 534px) {
     body {
         display: flex;

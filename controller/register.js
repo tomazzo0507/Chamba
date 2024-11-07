@@ -23,100 +23,118 @@ const analytics = getAnalytics(app);
 const auth = getAuth();
 const db = getFirestore(app);
 
-var email = document.getElementById("email")
-var name = document.getElementById("name")
-var password = document.getElementById("contra")
-var confir = document.getElementById("contra_confir")
-var btnRegister = document.getElementById("register")
-var toast = document.querySelector(".toast")
-var pToast = document.querySelector(".p_toast")
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        const uid = user.uid;
 
-btnRegister.addEventListener("click", () => {
-    if (email.value.length != 0) {
-        if (name.value.length != 0) {
-            if (password.value.length != 0) {
-                if (confir.value.length != 0) {
-                    if (confir.value == password.value) {
+        var email = document.getElementById("email")
+        var name = document.getElementById("name")
+        var password = document.getElementById("contra")
+        var confir = document.getElementById("contra_confir")
+        var btnRegister = document.getElementById("register")
+        var toast = document.querySelector(".toast")
+        var pToast = document.querySelector(".p_toast")
 
-                        createUserWithEmailAndPassword(auth, email.value, password.value)
-                            .then((userCredential) => {
-                                // Signed in
-                                const user = userCredential.user;
-                                sendEmailVerification(auth.currentUser).
-                                    then(() => {
-                                        addDoc(collection(db, "Admins", user.uid, "Private_Data"), {
-                                            Correo: email.value,
-                                            Id: user.uid,
-                                            Nombre: name.value,
-                                            Rol: "Administrador",
-                                            DarkMode: "",
-                                            URL: ""
-                                        });
-                                        addDoc(collection(db, "Admins_Entity", "Admins", "Private_Data"), {
-                                            Correo: email.value,
-                                            Nombre: name.value,
-                                            Rol: "Administrador",
-                                            DarkMode: "",
-                                            URL: ""
-                                        })
-                                    })
+        btnRegister.addEventListener("click", () => {
+            if (email.value.length != 0) {
+                if (name.value.length != 0) {
+                    if (password.value.length != 0) {
+                        if (confir.value.length != 0) {
+                            if (confir.value == password.value) {
 
-                                toast.style.background = "#30bf6c"
+                                onAuthStateChanged(auth, (user) => {
+                                    if (user) {
+                                        const uid = user.uid;
+
+                                        createUserWithEmailAndPassword(auth, email.value, password.value)
+                                            .then((userCredential) => {
+                                                // Signed in
+                                                const user = userCredential.user;
+                                                sendEmailVerification(auth.currentUser).
+                                                    then(() => {
+                                                        addDoc(collection(db, "Admins", user.uid, "Private_Data"), {
+                                                            Correo: email.value,
+                                                            Id: user.uid,
+                                                            Nombre: name.value,
+                                                            Rol: "Administrador",
+                                                            DarkMode: "",
+                                                            URL: ""
+                                                        });
+                                                        addDoc(collection(db, "Admins_Entity", "Admins", "Private_Data"), {
+                                                            Correo: email.value,
+                                                            Nombre: name.value,
+                                                            Rol: "Administrador",
+                                                            DarkMode: "",
+                                                            URL: ""
+                                                        })
+                                                    })
+
+                                                toast.style.background = "#30bf6c"
+                                                toast.classList.add("active")
+                                                pToast.textContent = "¡Listo! tu admin ha sido registrado"
+                                                setTimeout(() => toast.classList.remove("active"), 3000)
+
+                                            })
+                                            .catch((error) => {
+                                                const errorCode = error.code;
+                                                const errorMessage = error.message
+
+                                                toast.classList.add("active")
+                                                pToast.textContent = "No logramos registrar tu usuario"
+                                                setTimeout(() => toast.classList.remove("active"), 3000)
+                                            });
+                                    } else {
+                                        var out = document.querySelector('.out')
+
+                                        out.classList.add('active')
+                                    }
+                                });
+
+                            } else {
                                 toast.classList.add("active")
-                                pToast.textContent = "¡Listo! tu admin ha sido registrado"
+                                pToast.textContent = "Contraseñas diferentes"
                                 setTimeout(() => toast.classList.remove("active"), 3000)
-
-                            })
-                            .catch((error) => {
-                                const errorCode = error.code;
-                                const errorMessage = error.message
-
-                                toast.classList.add("active")
-                                pToast.textContent = "No logramos registrar tu usuario"
-                                setTimeout(() => toast.classList.remove("active"), 3000)
-                            });
-
+                            }
+                        } else {
+                            toast.classList.add("active")
+                            pToast.textContent = "Debes confirmar la contraseña"
+                            setTimeout(() => toast.classList.remove("active"), 3000)
+                        }
                     } else {
                         toast.classList.add("active")
-                        pToast.textContent = "Contraseñas diferentes"
+                        pToast.textContent = "Debes digitar la contraseña"
                         setTimeout(() => toast.classList.remove("active"), 3000)
                     }
                 } else {
                     toast.classList.add("active")
-                    pToast.textContent = "Debes confirmar la contraseña"
+                    pToast.textContent = "Debes digitar un nombre"
                     setTimeout(() => toast.classList.remove("active"), 3000)
                 }
             } else {
                 toast.classList.add("active")
-                pToast.textContent = "Debes digitar la contraseña"
+                pToast.textContent = "Debes digitar un Email"
                 setTimeout(() => toast.classList.remove("active"), 3000)
             }
-        } else {
-            toast.classList.add("active")
-            pToast.textContent = "Debes digitar un nombre"
-            setTimeout(() => toast.classList.remove("active"), 3000)
-        }
+        })
+
+        var eye = document.querySelector("#eye")
+
+        eye.addEventListener('click', () => {
+            eye.classList.toggle('active')
+
+            if (contra.type == "password") {
+                contra.type = "text"
+            } else if (contra.type == "text") {
+                contra.type = "password"
+            }
+        })
+
     } else {
-        toast.classList.add("active")
-        pToast.textContent = "Debes digitar un Email"
-        setTimeout(() => toast.classList.remove("active"), 3000)
+        var out = document.querySelector('.out')
+
+        out.classList.add('active')
     }
-})
-
-var eye = document.querySelector("#eye")
-
-eye.addEventListener('click', () => {
-    eye.classList.toggle('active')
-
-    if (contra.type == "password") {
-        contra.type = "text"
-    } else if (contra.type == "text") {
-        contra.type = "password"
-    }
-})
-
-// register
-
+});
 
 
 

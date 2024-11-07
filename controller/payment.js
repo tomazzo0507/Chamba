@@ -1,98 +1,150 @@
-var btn = document.querySelector("#btn")
-var sidebar = document.querySelector(".sidebar")
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-analytics.js";
+import { getFirestore, collection, addDoc, getDoc, getDocs, doc, where } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
+import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
-var close = document.querySelector('#close')
-var x = document.querySelector('#x')
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+    apiKey: "AIzaSyBPGTRPBGdXYGg9DPgMOeox8oS0BFBYq8s",
+    authDomain: "streaming-colombia.firebaseapp.com",
+    projectId: "streaming-colombia",
+    storageBucket: "streaming-colombia.firebasestorage.app",
+    messagingSenderId: "897187196778",
+    appId: "1:897187196778:web:7eeac1a574f14320507f13",
+    measurementId: "G-JTJF1RCPY5"
+};
 
-sidebar.classList.add("small");
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const auth = getAuth();
+const db = getFirestore(app);
 
-btn.addEventListener("click", () => {
-    sidebar.classList.toggle("small");
-})
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        const uid = user.uid;
 
-close.addEventListener('click', () => {
-    sidebar.classList.add("active");
-})
+        var btn = document.querySelector("#btn")
+        var sidebar = document.querySelector(".sidebar")
 
-x.addEventListener('click', () => {
-    sidebar.classList.remove("active");
-})
+        var close = document.querySelector('#close')
+        var x = document.querySelector('#x')
 
-// Dark Mode
+        sidebar.classList.add("small");
 
-const body = document.body
-const checkbox = document.querySelector('.theme-switch__checkbox')
-const palanca = document.querySelector('.theme-switch__checkbox')
+        btn.addEventListener("click", () => {
+            sidebar.classList.toggle("small");
+        })
 
-palanca.addEventListener('click', () => {
-    body.classList.toggle('dark-mode')
-})
+        close.addEventListener('click', () => {
+            sidebar.classList.add("active");
+        })
 
-// side menu
+        x.addEventListener('click', () => {
+            sidebar.classList.remove("active");
+        })
 
-var btnService = document.querySelector("#services")
-var btnInicio = document.querySelector("#inicio")
-var btnCobros = document.querySelector("#payment")
-var btnUsers = document.querySelector("#users")
-var btnAdmins = document.querySelector("#personal")
-var btnSettings = document.querySelector("#config")
+        // Dark Mode
 
-btnService.addEventListener("click", () => {
-    location.href = "/views/services.html"
-})
+        const body = document.body
+        const checkbox = document.querySelector('.theme-switch__checkbox')
+        const palanca = document.querySelector('.theme-switch__checkbox')
 
-btnInicio.addEventListener("click", () => {
-    location.href = "/views/inside.html"
-})
+        palanca.addEventListener('click', () => {
+            body.classList.toggle('dark-mode')
+        })
 
-btnCobros.addEventListener("click", () => {
-    location.href = "/views/payment.html"
-})
+        // side menu
 
-btnUsers.addEventListener('click', () => {
-    window.open("/views/register_users.html", "_blank");
-})
+        var btnService = document.querySelector("#services")
+        var btnInicio = document.querySelector("#inicio")
+        var btnCobros = document.querySelector("#payment")
+        var btnUsers = document.querySelector("#users")
+        var btnAdmins = document.querySelector("#personal")
+        var btnSettings = document.querySelector("#config")
 
-btnAdmins.addEventListener('click', () => {
-    location.href = "/views/personal.html";
-})
+        btnService.addEventListener("click", () => {
+            location.href = "/views/services.html"
+        })
 
-btnSettings.addEventListener("click", () => {
-    location.href = "/views/settings.html"
-})
+        btnInicio.addEventListener("click", () => {
+            location.href = "/views/inside.html"
+        })
 
-// out
+        btnCobros.addEventListener("click", () => {
+            location.href = "/views/payment.html"
+        })
 
-var out = document.querySelector('#out')
+        btnUsers.addEventListener('click', () => {
+            window.open("/views/register_users.html", "_blank");
+        })
 
-out.addEventListener("click", () => {
-    location.href = "/index.html"
-})
+        btnAdmins.addEventListener('click', () => {
+            location.href = "/views/personal.html";
+        })
 
-// pay
+        btnSettings.addEventListener("click", () => {
+            location.href = "/views/settings.html"
+        })
 
-var pay = document.querySelector('#pay')
-var payAll = document.querySelector('#payAll')
+        // out
 
-var service = document.querySelector('.select_service')
+        var out = document.querySelector('#out')
 
-pay.addEventListener('click', () => {
-    service.classList.toggle('active')
+        var toast = document.querySelector(".toast")
+        var pToast = document.querySelector(".p_toast")
 
-    window.addEventListener('click', event => {
-        if (event.target == service) {
-            service.classList.remove('active')
-        }
-    })
-    
-})
+        out.addEventListener("click", () => {
+            toast.classList.add("active")
+            toast.style.cursor = "pointer"
+            pToast.textContent = "Presiona esta alerta para salir"
+            setTimeout(() => toast.classList.remove("active"), 5000)
 
-payAll.addEventListener('click', () => {
-    service.classList.toggle('active')
+            toast.addEventListener('click', () => {
+                signOut(auth).then(() => {
+                    location.href = "/index.html"
+                }).catch((error) => {
+                    toast.classList.add("active")
+                    pToast.textContent = "Ooops, hubo un error al cerrar sesion"
+                    setTimeout(() => toast.classList.remove("active"), 3000)
+                });
+            })
+        })
 
-    window.addEventListener('click', event => {
-        if (event.target == service) {
-            service.classList.remove('active')
-        }
-    })
-})
+        // pay
+
+        var pay = document.querySelector('#pay')
+        var payAll = document.querySelector('#payAll')
+
+        var service = document.querySelector('.select_service')
+
+        pay.addEventListener('click', () => {
+            service.classList.toggle('active')
+
+            window.addEventListener('click', event => {
+                if (event.target == service) {
+                    service.classList.remove('active')
+                }
+            })
+
+        })
+
+        payAll.addEventListener('click', () => {
+            service.classList.toggle('active')
+
+            window.addEventListener('click', event => {
+                if (event.target == service) {
+                    service.classList.remove('active')
+                }
+            })
+        })
+
+    } else {
+        var out = document.querySelector('.out')
+        out.classList.add('active')
+    }
+});
+

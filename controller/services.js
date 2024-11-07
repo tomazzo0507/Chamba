@@ -1,165 +1,214 @@
-var btn = document.querySelector("#btn")
-var sidebar = document.querySelector(".sidebar")
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-analytics.js";
+import { getFirestore, collection, addDoc, getDoc, getDocs, doc, where } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
+import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
-var close = document.querySelector('#close')
-var x = document.querySelector('#x')
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+    apiKey: "AIzaSyBPGTRPBGdXYGg9DPgMOeox8oS0BFBYq8s",
+    authDomain: "streaming-colombia.firebaseapp.com",
+    projectId: "streaming-colombia",
+    storageBucket: "streaming-colombia.firebasestorage.app",
+    messagingSenderId: "897187196778",
+    appId: "1:897187196778:web:7eeac1a574f14320507f13",
+    measurementId: "G-JTJF1RCPY5"
+};
 
-sidebar.classList.add("small");
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const auth = getAuth();
+const db = getFirestore(app);
 
-btn.addEventListener("click", () => {
-    sidebar.classList.toggle("small");
-})
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        const uid = user.uid;
 
-close.addEventListener('click', () => {
-    sidebar.classList.add("active");
-})
+        var btn = document.querySelector("#btn")
+        var sidebar = document.querySelector(".sidebar")
 
-x.addEventListener('click', () => {
-    sidebar.classList.remove("active");
-})
+        var close = document.querySelector('#close')
+        var x = document.querySelector('#x')
 
-// side menu
+        sidebar.classList.add("small");
 
-var btnService = document.querySelector("#services")
-var btnInicio = document.querySelector("#inicio")
-var btnCobros = document.querySelector("#payment")
-var btnUsers = document.querySelector("#users")
-var btnAdmins = document.querySelector("#personal")
-var btnSettings = document.querySelector("#config")
+        btn.addEventListener("click", () => {
+            sidebar.classList.toggle("small");
+        })
 
-btnService.addEventListener("click", () => {
-    location.href = "/views/services.html"
-})
+        close.addEventListener('click', () => {
+            sidebar.classList.add("active");
+        })
 
-btnInicio.addEventListener("click", () => {
-    location.href = "/views/inside.html"
-})
+        x.addEventListener('click', () => {
+            sidebar.classList.remove("active");
+        })
 
-btnCobros.addEventListener("click", () => {
-    location.href = "/views/payment.html"
-})
+        // side menu
 
-btnUsers.addEventListener('click', () => {
-    window.open("/views/register_users.html", "_blank");
-})
+        var btnService = document.querySelector("#services")
+        var btnInicio = document.querySelector("#inicio")
+        var btnCobros = document.querySelector("#payment")
+        var btnUsers = document.querySelector("#users")
+        var btnAdmins = document.querySelector("#personal")
+        var btnSettings = document.querySelector("#config")
 
-btnAdmins.addEventListener('click', () => {
-    location.href = "/views/personal.html";
-})
+        btnService.addEventListener("click", () => {
+            location.href = "/views/services.html"
+        })
 
-btnSettings.addEventListener("click", () => {
-    location.href = "/views/settings.html"
-})
+        btnInicio.addEventListener("click", () => {
+            location.href = "/views/inside.html"
+        })
 
-// Dark Mode
+        btnCobros.addEventListener("click", () => {
+            location.href = "/views/payment.html"
+        })
 
-const body = document.body
-const checkbox = document.querySelector('.theme-switch__checkbox')
-const palanca = document.querySelector('.theme-switch__checkbox')
+        btnUsers.addEventListener('click', () => {
+            window.open("/views/register_users.html", "_blank");
+        })
 
-palanca.addEventListener('click', () => {
-    body.classList.toggle('dark-mode')
-})
+        btnAdmins.addEventListener('click', () => {
+            location.href = "/views/personal.html";
+        })
 
-// out
+        btnSettings.addEventListener("click", () => {
+            location.href = "/views/settings.html"
+        })
 
-var out = document.querySelector('#out')
+        // Dark Mode
 
-out.addEventListener("click", () => {
-    location.href = "/index.html"
-})
+        const body = document.body
+        const checkbox = document.querySelector('.theme-switch__checkbox')
+        const palanca = document.querySelector('.theme-switch__checkbox')
 
-// window 1
+        palanca.addEventListener('click', () => {
+            body.classList.toggle('dark-mode')
+        })
 
-var table = document.querySelector(".default")
+        // out
+        
+        var out = document.querySelector('#out')
 
-table.style.display = "none"
+        var toast = document.querySelector(".toast")
+        var pToast = document.querySelector(".p_toast")
 
-// window 2
+        out.addEventListener("click", () => {
+            toast.classList.add("active")
+            toast.style.cursor = "pointer"
+            pToast.textContent = "Presiona esta alerta para salir"
+            setTimeout(() => toast.classList.remove("active"), 5000)
 
-var service = document.querySelector(".services")
+            toast.addEventListener('click', () => {
+                signOut(auth).then(() => {
+                    location.href = "/index.html"
+                }).catch((error) => {
+                    toast.classList.add("active")
+                    pToast.textContent = "Ooops, hubo un error al cerrar sesion"
+                    setTimeout(() => toast.classList.remove("active"), 3000)
+                });
+            })
+        })
 
-var disney = document.querySelector(".disney");
-var apple = document.querySelector(".apple");
-var hbo = document.querySelector(".hbo");
-var netflix = document.querySelector(".netflix");
-var paramount = document.querySelector(".paramount");
-var prime = document.querySelector(".prime");
-var spotify = document.querySelector(".spotify");
-var youtube = document.querySelector(".youtube");
-var directv = document.querySelector(".directv");
-var disney_prem = document.querySelector(".disney_prem");
-var crunchyroll = document.querySelector(".crunchyroll");
-var vix = document.querySelector(".vix");
+        // window 1
 
-disney.addEventListener("click", () => {
-    service.style.display = "none";
-    table.style.display = "";
+        var table = document.querySelector(".default")
+
+        table.style.display = "none"
+
+        // window 2
+
+        var service = document.querySelector(".services")
+
+        var disney = document.querySelector(".disney");
+        var apple = document.querySelector(".apple");
+        var hbo = document.querySelector(".hbo");
+        var netflix = document.querySelector(".netflix");
+        var paramount = document.querySelector(".paramount");
+        var prime = document.querySelector(".prime");
+        var spotify = document.querySelector(".spotify");
+        var youtube = document.querySelector(".youtube");
+        var directv = document.querySelector(".directv");
+        var disney_prem = document.querySelector(".disney_prem");
+        var crunchyroll = document.querySelector(".crunchyroll");
+        var vix = document.querySelector(".vix");
+
+        disney.addEventListener("click", () => {
+            service.style.display = "none";
+            table.style.display = "";
+        });
+
+        apple.addEventListener("click", () => {
+            service.style.display = "none";
+            table.style.display = "";
+        });
+
+        hbo.addEventListener("click", () => {
+            service.style.display = "none";
+            table.style.display = "";
+        });
+
+        netflix.addEventListener("click", () => {
+            service.style.display = "none";
+            table.style.display = "";
+        });
+
+        paramount.addEventListener("click", () => {
+            service.style.display = "none";
+            table.style.display = "";
+        });
+
+        prime.addEventListener("click", () => {
+            service.style.display = "none";
+            table.style.display = "";
+        });
+
+        spotify.addEventListener("click", () => {
+            service.style.display = "none";
+            table.style.display = "";
+        });
+
+        youtube.addEventListener("click", () => {
+            service.style.display = "none";
+            table.style.display = "";
+        });
+
+        directv.addEventListener("click", () => {
+            service.style.display = "none";
+            table.style.display = "";
+        });
+
+        disney_prem.addEventListener("click", () => {
+            service.style.display = "none";
+            table.style.display = "";
+        });
+
+        crunchyroll.addEventListener("click", () => {
+            service.style.display = "none";
+            table.style.display = "";
+        });
+
+        vix.addEventListener("click", () => {
+            service.style.display = "none";
+            table.style.display = "";
+        });
+
+        // back window 1
+
+        var back = document.querySelector(".back")
+
+        back.addEventListener("click", () => {
+            service.style.display = "";
+            table.style.display = "none";
+        })
+
+    } else {
+        var out = document.querySelector('.out')
+        out.classList.add('active')
+    }
 });
-
-apple.addEventListener("click", () => {
-    service.style.display = "none";
-    table.style.display = "";
-});
-
-hbo.addEventListener("click", () => {
-    service.style.display = "none";
-    table.style.display = "";
-});
-
-netflix.addEventListener("click", () => {
-    service.style.display = "none";
-    table.style.display = "";
-});
-
-paramount.addEventListener("click", () => {
-    service.style.display = "none";
-    table.style.display = "";
-});
-
-prime.addEventListener("click", () => {
-    service.style.display = "none";
-    table.style.display = "";
-});
-
-spotify.addEventListener("click", () => {
-    service.style.display = "none";
-    table.style.display = "";
-});
-
-youtube.addEventListener("click", () => {
-    service.style.display = "none";
-    table.style.display = "";
-});
-
-directv.addEventListener("click", () => {
-    service.style.display = "none";
-    table.style.display = "";
-});
-
-disney_prem.addEventListener("click", () => {
-    service.style.display = "none";
-    table.style.display = "";
-});
-
-crunchyroll.addEventListener("click", () => {
-    service.style.display = "none";
-    table.style.display = "";
-});
-
-vix.addEventListener("click", () => {
-    service.style.display = "none";
-    table.style.display = "";
-});
-
-// back window 1
-
-var back = document.querySelector(".back")
-
-back.addEventListener("click", () => {
-    service.style.display = "";
-    table.style.display = "none";
-})
-
-
 
