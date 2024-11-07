@@ -24,6 +24,8 @@ var btnService = document.querySelector("#services")
 var btnInicio = document.querySelector("#inicio")
 var btnCobros = document.querySelector("#payment")
 var btnUsers = document.querySelector("#users")
+var btnAdmins = document.querySelector("#personal")
+var btnSettings = document.querySelector("#config")
 
 btnService.addEventListener("click", () => {
     location.href = "/views/services.html"
@@ -39,6 +41,14 @@ btnCobros.addEventListener("click", () => {
 
 btnUsers.addEventListener('click', () => {
     window.open("/views/register_users.html", "_blank");
+})
+
+btnAdmins.addEventListener('click', () => {
+    location.href = "/views/personal.html";
+})
+
+btnSettings.addEventListener("click", () => {
+    location.href = "/views/settings.html"
 })
 
 // Dark Mode

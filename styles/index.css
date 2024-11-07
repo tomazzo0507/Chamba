@@ -142,6 +142,7 @@ body {
     align-items: end;
     justify-content: center;
     transition: all .2s ease;
+    backdrop-filter: blur(10px);
 }
 
 .container_ups.active{

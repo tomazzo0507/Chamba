@@ -13,14 +13,14 @@
         <p>Registra un nuevo Administrador</p>
         <div class="input">
             <i class="fa-solid fa-envelope fa-bounce"></i>
-            <input class="correo" type="email" id="username" placeholder="Correo" autocomplete="off">
+            <input class="correo" type="email" id="email" placeholder="Correo" autocomplete="off">
         </div>
 
         <div class="input">
             <i class="fa-solid fa-user fa-bounce"></i>
             <input class="nombre" type="text" id="name" placeholder="Nombre completo" autocomplete="off">
         </div>
-        
+
         <div class="input">
             <i class="fa-solid fa-lock fa-shake"></i>
             <input class="contra" type="password" id="contra" placeholder="Contraseña" autocomplete="off">
@@ -31,11 +31,17 @@
             <i class="fa-solid fa-lock fa-shake"></i>
             <input class="contra_confir" type="password" id="contra_confir" placeholder="Confirmar contraseña" autocomplete="off">
         </div>
-        
+
         <br>
 
-        <button class="login" type="button" href="/views/inside.html">Registrar</button>
+        <button id="register" class="regitrar" type="button" href="/views/inside.html">Registrar</button>
     </div>
-<script src="/controller/register.js"></script>
+
+    <div class="toast">
+        <i class="fa-solid fa-triangle-exclamation fa-shake"></i>
+        <p class="p_toast"></p>
+    </div>
+    
+    <script src="/controller/register.js" type="module"></script>
 </body>
 </html>

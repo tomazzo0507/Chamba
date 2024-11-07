@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Configuración</title>
+        <script src="https://unpkg.com/@phosphor-icons/web"></script>
+        <link rel="stylesheet" href="/styles/settings.css">
+        <script src="https://kit.fontawesome.com/460146b1b8.js"
+            crossorigin="anonymous"></script>
+    </head>
+    <body class="">
+        <div class="container">
+            <div class="top">
+                <img src="/assets/admin.png" alt="">
+                <div class="text_top">
+                    <h1>Juan Martinez</h1>
+                    <p>asdfghjk@gmail.com</p>
+                </div>
+            </div>
+            <div class="content">
+                <div class="top_content">
+                    <i class="fa-solid fa-id-card"></i>
+                    <div class="text_top-content">
+                        <h3>Información personal</h3>
+                        <p>En este apartado podrás actualizar tus datos personales</p>
+                    </div>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+                <div class="bottom_content">
+                    <i class="fa-solid fa-lock"></i>
+                    <div class="text_bottom-content">
+                        <h3>Seguridad</h3>
+                        <p>En este apartado podrás actualizar tu contraseña</p>
+                    </div>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="container_change-info">
+            <div class="change_info">
+                <span></span>
+                <div class="content_change-info">
+                    <img src="/assets/admin.png" alt="">
+                    <input type="text" hidden>
+                    <input type="text" placeholder="Nombre completo">
+                    <input type="email" placeholder="Correo electronico">
+                    <a href="">Actualizar</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container_change-contra">
+            <div class="change_contra">
+                <span></span>
+                <div class="content_change-contra">
+                    <i class="fa-solid fa-lock fa-shake"></i>
+                    <input type="text" hidden>
+                    <input type="password" placeholder="Nueva contraseña">
+                    <input type="text" placeholder="Confirma tu contraseña">
+                    <a href="">Actualizar</a>
+                </div>
+            </div>
+        </div>
+        <script src="/controller/settings.js"></script>
+    </body>
+</html>

@@ -71,28 +71,8 @@ out.addEventListener("click", () => {
 
 // pay
 
-var pay = document.querySelector('#pay')
 var payAll = document.querySelector('#payAll')
 
-var service = document.querySelector('.select_service')
-
-pay.addEventListener('click', () => {
-    service.classList.toggle('active')
-
-    window.addEventListener('click', event => {
-        if (event.target == service) {
-            service.classList.remove('active')
-        }
-    })
-    
-})
-
 payAll.addEventListener('click', () => {
-    service.classList.toggle('active')
-
-    window.addEventListener('click', event => {
-        if (event.target == service) {
-            service.classList.remove('active')
-        }
-    })
+    window.open("/views/register.html", "_blank");
 })
