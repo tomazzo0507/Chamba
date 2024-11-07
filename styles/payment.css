@@ -308,7 +308,7 @@ body {
     padding: 1rem 2rem 1rem 7rem;
 }
 
-.default .pay_all{
+.default .pay_all {
     background-color: var(--color-rojo);
     display: flex;
     justify-content: center;
@@ -326,7 +326,7 @@ body {
     font-size: 13px;
 }
 
-.pay_all:hover{
+.pay_all:hover {
     transform: translateX(10px) scale(1.05);
 }
 
@@ -977,7 +977,7 @@ table tbody tr th p.reserva {
     border-radius: 10px;
 }
 
-.toast{
+.toast {
     position: fixed;
     top: 30px;
     right: -100vw;
@@ -994,11 +994,11 @@ table tbody tr th p.reserva {
     gap: 1rem;
 }
 
-.toast p:not(.p_toast){
+.toast p:not(.p_toast) {
     color: #872222;
 }
 
-.toast.active{
+.toast.active {
     right: 0;
 }
 
@@ -1049,6 +1049,10 @@ table tbody tr th p.reserva {
 
     .header .right_header {
         flex-direction: row;
+    }
+
+    .toast {
+        margin-top: 4rem;
     }
 }
 

@@ -1282,15 +1282,16 @@ table tbody tr th p.reserva {
 }
 
 .out .text_out h1 {
-    font-size: 50px;
     font-weight: 1000;
     color: white;
+    text-align: center;
 }
 
 .out .text_out p {
     color: white;
     font-size: 13px;
     margin-bottom: 1rem;
+    text-align: center;
 }
 
 .out .text_out a {
@@ -1421,6 +1422,10 @@ table tbody tr th p.reserva {
     .change_estado .content_change-estado i {
         right: 88%;
     }
+
+    .toast {
+        margin-top: 4rem;
+    }
 }
 
 @media (width < 500px) {
@@ -1442,6 +1447,14 @@ table tbody tr th p.reserva {
     .change_estado .content_change-estado .p_change-estado {
         grid-template-columns: 1fr;
         grid-template-rows: repeat(5, 0.2fr);
+    }
+
+    .out .text_out {
+        margin-top: 6rem;
+    }
+
+    .out .text_out h1 {
+        font-size: 30px;
     }
 }
 

@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-analytics.js";
-import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js";
+import { getAuth, signInWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -28,38 +28,70 @@ var contra = document.querySelector(".contra")
 var toast = document.querySelector(".toast")
 var pToast = document.querySelector(".p_toast")
 
-login.addEventListener("click", () =>  {
+var send_email = document.querySelector('.send_email')
+var send_password = document.querySelector('.send_password')
+
+send_password.addEventListener('click', () => {
+    if (send_email.value.length != 0) {
+
+        sendPasswordResetEmail(auth, send_email.value)
+            .then(() => {
+                toast.style.background = "#30bf6c"
+                toast.classList.add("active")
+                pToast.textContent = "Revisa tu correo electronico"
+                setTimeout(() => toast.classList.remove("active"), 3000)
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+
+                toast.classList.add("active")
+                pToast.textContent = "Correo incorrecto"
+                setTimeout(() => toast.classList.remove("active"), 3000)
+            });
+
+    } else {
+        toast.classList.add("active")
+        pToast.textContent = "Debes ingresar tu correo"
+        setTimeout(() => toast.classList.remove("active"), 3000)
+    }
+})
+
+login.addEventListener("click", () => {
 
     if (user.value.length != 0) {
         if (contra.value.length != 0) {
 
             signInWithEmailAndPassword(auth, user.value, contra.value)
-            .then ((userCredential) => {
-                const user = userCredential.user;
+                .then((userCredential) => {
+                    const user = userCredential.user;
 
-                if (getAuth().currentUser.emailVerified) {
-                    location.href = "/views/inside.html"
-                } else {
-                    toast.style.background = "#8955bd"
+                    if (getAuth().currentUser.emailVerified) {
+                        location.href = "/views/inside.html"
+                    } else {
+                        toast.style.background = "#8955bd"
+                        toast.classList.add("active")
+                        pToast.textContent = "Parece que no has verificado tu Email"
+                        setTimeout(() => toast.classList.remove("active"), 3000)
+                    }
+                }).catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+
+                    toast.style.background = "e15a5a"
                     toast.classList.add("active")
-                    pToast.textContent = "Parece que no has verificado tu Email"
+                    pToast.textContent = "Correo o contraseña incorrectos"
                     setTimeout(() => toast.classList.remove("active"), 3000)
-                }
-            }) .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-
-                toast.classList.add("active")
-                pToast.textContent = "Correo o contraseña incorrectos"
-                setTimeout(() => toast.classList.remove("active"), 3000)
-            })
+                })
 
         } else {
+            toast.style.background = "e15a5a"
             toast.classList.add("active")
             pToast.textContent = "Debes ingresar tu contraseña"
             setTimeout(() => toast.classList.remove("active"), 3000)
         }
     } else {
+        toast.style.background = "e15a5a"
         toast.classList.add("active")
         pToast.textContent = "Debes ingresar el Email"
         setTimeout(() => toast.classList.remove("active"), 3000)

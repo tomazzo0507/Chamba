@@ -1050,6 +1050,10 @@ table tbody tr th p.reserva {
     .header .right_header {
         flex-direction: row;
     }
+
+    .toast {
+        margin-top: 4rem;
+    }
 }
 
 @media (width < 500px) {

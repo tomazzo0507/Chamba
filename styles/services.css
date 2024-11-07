@@ -1053,6 +1053,10 @@ table tbody tr th p.reserva {
     .services{
         padding: 1rem 2rem;
     }
+
+    .toast {
+        margin-top: 4rem;
+    }
 }
 
 @media (width < 350px) {
