@@ -3,12 +3,6 @@
 var btnService = document.querySelector('.servicio')
 var service = document.querySelector('.select_service')
 
-btnService.addEventListener('focus', (event) => {
-    if (/Mobi|Android/i.test(navigator.userAgent)) {
-        event.preventDefault();
-    }
-});
-
 var disney = document.querySelector('.disney');
 var apple = document.querySelector('.apple');
 var hbo = document.querySelector('.hbo');
@@ -44,6 +38,7 @@ disney.addEventListener('click', () => {
     } else {
         btnService.value = "Disney+";
     }
+    disney.style.display = 'none';
 });
 
 apple.addEventListener('click', () => {
@@ -54,6 +49,7 @@ apple.addEventListener('click', () => {
     } else {
         btnService.value = "Apple TV";
     }
+    apple.style.display = 'none';
 });
 
 hbo.addEventListener('click', () => {
@@ -64,6 +60,7 @@ hbo.addEventListener('click', () => {
     } else {
         btnService.value = "HBO";
     }
+    hbo.style.display = 'none';
 });
 
 netflix.addEventListener('click', () => {
@@ -74,6 +71,7 @@ netflix.addEventListener('click', () => {
     } else {
         btnService.value = "Netflix";
     }
+    netflix.style.display = 'none';
 });
 
 paramount.addEventListener('click', () => {
@@ -84,6 +82,7 @@ paramount.addEventListener('click', () => {
     } else {
         btnService.value = "Paramount+";
     }
+    paramount.style.display = 'none';
 });
 
 prime.addEventListener('click', () => {
@@ -94,6 +93,7 @@ prime.addEventListener('click', () => {
     } else {
         btnService.value = "Prime Video";
     }
+    prime.style.display = 'none';
 });
 
 crunchyroll.addEventListener('click', () => {
@@ -104,6 +104,7 @@ crunchyroll.addEventListener('click', () => {
     } else {
         btnService.value = "Crunchyroll";
     }
+    crunchyroll.style.display = 'none';
 });
 
 directv.addEventListener('click', () => {
@@ -114,6 +115,7 @@ directv.addEventListener('click', () => {
     } else {
         btnService.value = "DirecTV";
     }
+    directv.style.display = 'none';
 });
 
 disneypremium.addEventListener('click', () => {
@@ -122,8 +124,9 @@ disneypremium.addEventListener('click', () => {
     if (btnService.value.length != 0) {
         btnService.value += ", Disney+ Premium";
     } else {
-        btnService.value = "Disney + Premium";
+        btnService.value = "Disney+ Premium";
     }
+    disneypremium.style.display = 'none';
 });
 
 spotify.addEventListener('click', () => {
@@ -134,6 +137,7 @@ spotify.addEventListener('click', () => {
     } else {
         btnService.value = "Spotify";
     }
+    spotify.style.display = 'none';
 });
 
 vix.addEventListener('click', () => {
@@ -144,6 +148,7 @@ vix.addEventListener('click', () => {
     } else {
         btnService.value = "Vix";
     }
+    vix.style.display = 'none';
 });
 
 youtube.addEventListener('click', () => {
@@ -154,6 +159,7 @@ youtube.addEventListener('click', () => {
     } else {
         btnService.value = "YouTube";
     }
+    youtube.style.display = 'none';
 });
 
 // clean_service
@@ -162,6 +168,19 @@ var clean_service = document.querySelector('#clean_service')
 
 clean_service.addEventListener('click', () => {
     btnService.value = "";
+
+    disney.style.display = '';
+    apple.style.display = '';
+    hbo.style.display = '';
+    netflix.style.display = '';
+    paramount.style.display = '';
+    prime.style.display = '';
+    crunchyroll.style.display = '';
+    directv.style.display = '';
+    disneypremium.style.display = '';
+    spotify.style.display = '';
+    vix.style.display = '';
+    youtube.style.display = '';
 })
 
 // select_pais

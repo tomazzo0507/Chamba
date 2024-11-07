@@ -100,15 +100,26 @@ body {
     margin-bottom: .5rem;
 }
 
-.cont .input input {
+.cont .input input,
+.cont .input textarea {
     width: 100%;
     padding: 1rem 1rem 1rem .5rem;
     border: none;
     outline: none;
 }
 
+.cont .input textarea {
+    height: 65px;
+    padding-top: 1.5rem;
+    resize: none
+}
+
+.cont .input textarea::-webkit-scrollbar {
+    width: 0;
+}
+
 .cont .input:nth-child(6) input,
-.cont .input:nth-child(7) input {
+.cont .input:nth-child(7) textarea {
     cursor: pointer;
 }
 
