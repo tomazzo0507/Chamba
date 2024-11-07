@@ -3,6 +3,12 @@
 var btnService = document.querySelector('.servicio')
 var service = document.querySelector('.select_service')
 
+btnService.addEventListener('focus', (event) => {
+    if (/Mobi|Android/i.test(navigator.userAgent)) {
+        event.preventDefault();
+    }
+});
+
 var disney = document.querySelector('.disney');
 var apple = document.querySelector('.apple');
 var hbo = document.querySelector('.hbo');
@@ -162,6 +168,12 @@ clean_service.addEventListener('click', () => {
 
 var btnPais = document.querySelector('.pais')
 var pais = document.querySelector('.select_pais')
+
+btnPais.addEventListener('focus', (event) => {
+    if (/Mobi|Android/i.test(navigator.userAgent)) {
+        event.preventDefault();
+    }
+});
 
 var colombia = document.querySelector('.colombia');
 var argentina = document.querySelector('.argentina');
