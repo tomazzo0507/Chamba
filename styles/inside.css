@@ -364,10 +364,6 @@ table tbody tr th div.servicios img {
     border: solid 2px var(--color-white);
 }
 
-table tbody tr th div.servicios img:not(:first-child) {
-    margin-left: -.5rem;
-}
-
 table tbody tr th p {
     padding: 1rem 0;
     border-radius: 10px;

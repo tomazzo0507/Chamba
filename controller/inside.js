@@ -481,13 +481,14 @@ onAuthStateChanged(auth, (user) => {
         getDocs(collection(db, "Users", "SUw3PRfA", "Private_Data"))
             .then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
+
                     var tr = document.createElement('tr')
                     var nombre = document.createElement('th')
                     var correo = document.createElement('th')
                     var cuenta_padre = document.createElement('th')
+                    var img_servicio
                     var servicio = document.createElement('th')
                     var cont_servicio = document.createElement('div')
-                    var img_servicio = document.createElement('img')
                     var estado = document.createElement('th')
                     var p_estado = document.createElement('p')
 
@@ -495,10 +496,123 @@ onAuthStateChanged(auth, (user) => {
                     correo.textContent = doc.data().Correo
                     cuenta_padre.textContent = doc.data().Correo_Padre
 
-                    cont_servicio.className = "servicio"
+                    let servicios = doc.data().Servicio.split(", ")
 
-                    if (doc.data().Servicio == "Prime Video") {
-                        img_servicio.src = "/assets/logo_prime.png"
+                    if (servicios.length > 1) {
+
+                        cont_servicio.className = "servicios"
+
+                        for (var i = 0; i < servicios.length; i++) {
+                            img_servicio = document.createElement("img")
+
+                            if (servicios[i] == "Prime Video") {
+                                img_servicio.src = "/assets/logo_prime.png"
+                            }
+    
+                            if (servicios[i] == "Netflix") {
+                                img_servicio.src = "/assets/logo_netflix.png"
+                            }
+    
+                            if (servicios[i] == "Spotify") {
+                                img_servicio.src = "/assets/logo_spotify.jpg"
+                            }
+    
+                            if (servicios[i] == "Vix") {
+                                img_servicio.src = "/assets/logo_vix.jpg"
+                            }
+    
+                            if (servicios[i] == "HBO") {
+                                img_servicio.src = "/assets/logo_hbo.png"
+                            }
+
+                            if (servicios[i] == "Disney+") {
+                                img_servicio.src = "/assets/logo_disney.jpg"
+                            }
+    
+                            if (servicios[i] == "Disney+ Premium") {
+                                img_servicio.src = "/assets/logo_disneypremium.png"
+                            }
+    
+                            if (servicios[i] == "Paramount+") {
+                                img_servicio.src = "/assets/logo_paramount.png"
+                            }
+    
+                            if (servicios[i] == "DirecTV") {
+                                img_servicio.src = "/assets/logo_directv.png"
+                            }
+    
+                            if (servicios[i] == "Crunchyroll") {
+                                img_servicio.src = "/assets/logo_crunchyroll.png"
+                            }
+    
+                            if (servicios[i] == "YouTube") {
+                                img_servicio.src = "/assets/logo_youtube.png"
+                            }
+    
+                            if (servicios[i] == "Apple TV") {
+                                img_servicio.src = "/assets/logo_apple.png"
+                            }
+
+                            if(servicios.length > 6){
+                                cont_servicio.style.display = "grid"
+                                cont_servicio.style.gridTemplateColumns = "1fr 1fr 1fr 1fr 1fr 1fr"
+                            }
+
+                            cont_servicio.appendChild(img_servicio)
+                        }
+
+                    } else {
+
+                        img_servicio = document.createElement('img')
+
+                        cont_servicio.className = "servicio"
+
+                        if (doc.data().Servicio == "Prime Video") {
+                            img_servicio.src = "/assets/logo_prime.png"
+                        }
+
+                        if (doc.data().Servicio == "Netflix") {
+                            img_servicio.src = "/assets/logo_netflix.png"
+                        }
+
+                        if (doc.data().Servicio == "Spotify") {
+                            img_servicio.src = "/assets/logo_spotify.jpg"
+                        }
+
+                        if (doc.data().Servicio == "Vix") {
+                            img_servicio.src = "/assets/logo_vix.jpg"
+                        }
+
+                        if (doc.data().Servicio == "Disney+") {
+                            img_servicio.src = "/assets/logo_disney.jpg"
+                        }
+
+                        if (doc.data().Servicio == "Disney+ Premium") {
+                            img_servicio.src = "/assets/logo_disneypremium.png"
+                        }
+
+                        if (doc.data().Servicio == "Paramount+") {
+                            img_servicio.src = "/assets/logo_paramount.png"
+                        }
+
+                        if (doc.data().Servicio == "DirectTv") {
+                            img_servicio.src = "/assets/logo_.png"
+                        }
+
+                        if (doc.data().Servicio == "Crunchyroll") {
+                            img_servicio.src = "/assets/logo_crunchyroll.png"
+                        }
+
+                        if (doc.data().Servicio == "Youtube") {
+                            img_servicio.src = "/assets/logo_youtube.png"
+                        }
+
+                        if (doc.data().Servicio == "Apple TV") {
+                            img_servicio.src = "/assets/logo_apple.png"
+                        }
+
+                        cont_servicio.appendChild(img_servicio)
+
                     }
 
                     if (doc.data().Estado == "Activo") {
@@ -513,7 +627,6 @@ onAuthStateChanged(auth, (user) => {
                     tr.appendChild(servicio)
                     tr.appendChild(estado)
                     servicio.appendChild(cont_servicio)
-                    cont_servicio.appendChild(img_servicio)
                     estado.appendChild(p_estado)
 
                     // Change estado

@@ -249,6 +249,50 @@ onAuthStateChanged(auth, (user) => {
         payAll.addEventListener('click', () => {
             window.open("/views/register.html", "_blank");
         })
+
+        // MOSTRAR ADMIN
+
+        getDocs(collection(db, "Admins_Entity", "Admins", "Private_Data"))
+        .then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                if(doc.data().Rol == "Empleado"){
+                    
+                    var tbody = document.querySelector(".tbody")
+                    var tr = document.createElement("tr")
+                    var th_photo = document.createElement("th")
+                    var photo = document.createElement("img")
+                    var nombre = document.createElement("th")
+                    var correo = document.createElement("th")
+                    var fecha = document.createElement("th")
+                    var th_delete = document.createElement("th")
+                    var deleteButton = document.createElement("p")
+                    
+                    if(doc.data().URL == ""){
+                        photo.src = "/assets/profile.png"
+                    }else{
+                        photo.src = doc.data().URL
+                    }
+
+                    nombre.textContent = doc.data().Nombre
+                    correo.textContent = doc.data().Correo
+                    fecha.textContent = ""
+                    deleteButton.textContent = "Eliminar"
+
+                    deleteButton.className = "inactivo"
+
+                    tbody.appendChild(tr)
+                    tr.appendChild(th_photo)
+                    tr.appendChild(nombre)
+                    tr.appendChild(correo)
+                    tr.appendChild(fecha)
+                    tr.appendChild(th_delete)
+                    th_photo.appendChild(photo)
+                    th_delete.appendChild(deleteButton)
+
+                }
+            })
+        })
+
     } else {
         var out = document.querySelector('.out')
 
