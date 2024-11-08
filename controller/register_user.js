@@ -310,7 +310,8 @@ onAuthStateChanged(auth, (user) => {
                                                 Correo_Padre: email_father.value,
                                                 Servicio: service.value,
                                                 Pais: country.value,
-                                                Fecha: date.value
+                                                Fecha: date.value,
+                                                Estado: "Activo"
                                             });
 
                                             toast.style.background = "#79cb5f";
