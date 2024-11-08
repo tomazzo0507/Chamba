@@ -2,7 +2,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-analytics.js";
 import { getFirestore, collection, addDoc, getDoc, getDocs, doc, where, query, updateDoc } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
-import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js";
+import { getAuth, onAuthStateChanged, signOut, createUserWithEmailAndPassword, sendEmailVerification } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -48,10 +48,9 @@ onAuthStateChanged(auth, (user) => {
 
                                         createUserWithEmailAndPassword(auth, email.value, password.value)
                                             .then((userCredential) => {
-                                                // Signed in
                                                 const user = userCredential.user;
-                                                sendEmailVerification(auth.currentUser).
-                                                    then(() => {
+                                                sendEmailVerification(user)
+                                                    .then(() => {
                                                         addDoc(collection(db, "Admins", user.uid, "Private_Data"), {
                                                             Correo: email.value,
                                                             Id: user.uid,
@@ -60,28 +59,29 @@ onAuthStateChanged(auth, (user) => {
                                                             DarkMode: "desactive",
                                                             URL: ""
                                                         });
+
                                                         addDoc(collection(db, "Admins_Entity", "Admins", "Private_Data"), {
                                                             Correo: email.value,
                                                             Nombre: name.value,
                                                             Rol: "Administrador",
                                                             DarkMode: "desactive",
                                                             URL: ""
-                                                        })
+                                                        });
                                                     })
 
-                                                toast.style.background = "#30bf6c"
-                                                toast.classList.add("active")
-                                                pToast.textContent = "¡Listo! tu admin ha sido registrado"
-                                                setTimeout(() => toast.classList.remove("active"), 3000)
+                                                toast.style.background = "#30bf6c";
+                                                toast.classList.add("active");
+                                                pToast.textContent = "¡Listo! tu admin ha sido registrado";
+                                                setTimeout(() => toast.classList.remove("active"), 3000);
 
-                                            })
-                                            .catch((error) => {
-                                                const errorCode = error.code;
-                                                const errorMessage = error.message
+                                                
 
-                                                toast.classList.add("active")
-                                                pToast.textContent = "No logramos registrar tu usuario"
-                                                setTimeout(() => toast.classList.remove("active"), 3000)
+                                            }).catch((error) => {
+                                                toast.style.background = "#e15a5a";
+                                                toast.classList.add("active");
+                                                pToast.textContent = "No logramos registrar tu usuario";
+                                                setTimeout(() => toast.classList.remove("active"), 3000);
+                                                console.error("Error:", error);
                                             });
                                     } else {
                                         var out = document.querySelector('.out')
@@ -91,26 +91,31 @@ onAuthStateChanged(auth, (user) => {
                                 });
 
                             } else {
+                                toast.style.background = "#e15a5a"
                                 toast.classList.add("active")
                                 pToast.textContent = "Contraseñas diferentes"
                                 setTimeout(() => toast.classList.remove("active"), 3000)
                             }
                         } else {
+                            toast.style.background = "#e15a5a"
                             toast.classList.add("active")
                             pToast.textContent = "Debes confirmar la contraseña"
                             setTimeout(() => toast.classList.remove("active"), 3000)
                         }
                     } else {
+                        toast.style.background = "#e15a5a"
                         toast.classList.add("active")
                         pToast.textContent = "Debes digitar la contraseña"
                         setTimeout(() => toast.classList.remove("active"), 3000)
                     }
                 } else {
+                    toast.style.background = "#e15a5a"
                     toast.classList.add("active")
                     pToast.textContent = "Debes digitar un nombre"
                     setTimeout(() => toast.classList.remove("active"), 3000)
                 }
             } else {
+                toast.style.background = "#e15a5a"
                 toast.classList.add("active")
                 pToast.textContent = "Debes digitar un Email"
                 setTimeout(() => toast.classList.remove("active"), 3000)
