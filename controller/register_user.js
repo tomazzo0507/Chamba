@@ -280,6 +280,91 @@ onAuthStateChanged(auth, (user) => {
             btnPais.disabled = false;
         });
 
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                const uid = user.uid;
+
+                var toast = document.querySelector(".toast");
+                var pToast = document.querySelector(".p_toast");
+
+                var email = document.getElementById("email");
+                var name = document.getElementById("name");
+                var email_father = document.getElementById("email_father");
+                var service = document.getElementById("service");
+                var date = document.getElementById("date");
+                var country = document.getElementById("country");
+                var btnRegister = document.querySelector(".registro")
+
+                btnRegister.addEventListener("click", () => {
+
+                    if (date.value.length != 0) {
+                        if (email.value.length != 0) {
+                            if (name.value.length != 0) {
+                                if (email_father.value.length != 0) {
+                                    if (service.value.length != 0) {
+                                        if (country.value.length != 0) {
+
+                                            addDoc(collection(db, "Users", "SUw3PRfA", "Private_Data"), {
+                                                Nombre: name.value,
+                                                Correo: email.value,
+                                                Correo_Padre: email_father.value,
+                                                Servicio: service.value,
+                                                Pais: country.value,
+                                                Fecha: date.value
+                                            });
+
+                                            toast.style.background = "#79cb5f";
+                                            toast.classList.add("active");
+                                            pToast.textContent = "Ya registramos tu usuario " + name.value;
+                                            setTimeout(() => toast.classList.remove("active"), 3000);
+
+                                        } else {
+                                            toast.style.background = "#e15a5a";
+                                            toast.classList.add("active");
+                                            pToast.textContent = "Debes elegir un país";
+                                            setTimeout(() => toast.classList.remove("active"), 3000);
+                                        }
+                                    } else {
+                                        toast.style.background = "#e15a5a";
+                                        toast.classList.add("active");
+                                        pToast.textContent = "Debes elegir los servicios";
+                                        setTimeout(() => toast.classList.remove("active"), 3000);
+                                    }
+                                } else {
+                                    toast.style.background = "#e15a5a";
+                                    toast.classList.add("active");
+                                    pToast.textContent = "Debes digitar correo padre";
+                                    setTimeout(() => toast.classList.remove("active"), 3000);
+                                }
+                            } else {
+                                toast.style.background = "#e15a5a";
+                                toast.classList.add("active");
+                                pToast.textContent = "Debes digitar un nombre";
+                                setTimeout(() => toast.classList.remove("active"), 3000);
+                            }
+                        } else {
+                            toast.style.background = "#e15a5a";
+                            toast.classList.add("active");
+                            pToast.textContent = "Debes digitar un Email";
+                            setTimeout(() => toast.classList.remove("active"), 3000);
+                        }
+                    } else {
+                        toast.style.background = "#e15a5a";
+                            toast.classList.add("active");
+                            pToast.textContent = "Debes ingresar la fecha de inicio de la(s) suscripcion(es)";
+                            setTimeout(() => toast.classList.remove("active"), 3000);
+                    }
+
+                });
+
+            } else {
+
+                var out = document.querySelector('.out')
+                out.classList.add('active')
+
+            }
+        });
+
 
     } else {
         var out = document.querySelector('.out')

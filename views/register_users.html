@@ -15,12 +15,12 @@
         <p>Registra un nuevo Usuario</p>
         <div class="input">
             <i class="fa-solid fa-envelope fa-bounce"></i>
-            <input class="correo" type="email" id="username" placeholder="Correo" autocomplete="off">
+            <input class="correo" type="email" id="email" placeholder="Correo" autocomplete="off">
         </div>
 
         <div class="input">
             <i class="fa-solid fa-envelope fa-bounce"></i>
-            <input class="nombre" type="email" id="padre" placeholder="Correo Padre" autocomplete="off">
+            <input class="nombre" type="email" id="email_father" placeholder="Correo Padre" autocomplete="off">
         </div>
 
         <div class="input">
@@ -30,18 +30,23 @@
 
         <div class="input">
             <i class="fa-brands fa-amazon"></i>
-            <textarea class="servicio" id="servicio" placeholder="Selecciona el servicio" autocomplete="off"></textarea>
+            <textarea class="servicio" id="service" placeholder="Selecciona el servicio" autocomplete="off"></textarea>
             <i class="fa-solid fa-trash" id="clean_service"></i>
         </div>
 
         <div class="input">
             <i class="fa-solid fa-earth-americas"></i>
-            <input class="pais" type="text" id="pais" placeholder="Selecciona el pais" autocomplete="off">
+            <input class="fecha" type="date" id="date" placeholder="Selecciona la fecha" autocomplete="off">
+        </div>
+
+        <div class="input">
+            <i class="fa-solid fa-earth-americas"></i>
+            <input class="pais" type="text" id="country" placeholder="Selecciona el pais" autocomplete="off">
         </div>
 
         <br>
 
-        <button class="login" type="button" href="/views/inside.html">Registrar</button>
+        <button class="registro" type="button" href="/views/inside.html">Registrar</button>
     </div>
 
     <div class="select_service">
@@ -139,6 +144,11 @@
             <p>No has iniciado sesion de manera correcta</p>
             <a href="/index.html">Iniciar sesion</a>
         </div>
+    </div>
+
+    <div class="toast">
+        <i class="fa-solid fa-triangle-exclamation fa-shake"></i>
+        <p class="p_toast"></p>
     </div>
 
     <script type="module" src="/controller/register_user.js"></script>
