@@ -284,12 +284,17 @@ onAuthStateChanged(auth, (user) => {
             if (user) {
                 const uid = user.uid;
 
+                flatpickr("#date", {
+                    dateFormat: "d/m/Y",
+                });
+
                 var toast = document.querySelector(".toast");
                 var pToast = document.querySelector(".p_toast");
 
                 var email = document.getElementById("email");
                 var name = document.getElementById("name");
                 var email_father = document.getElementById("email_father");
+                var number = document.querySelector('.number')
                 var service = document.getElementById("service");
                 var date = document.getElementById("date");
                 var country = document.getElementById("country");
@@ -297,63 +302,71 @@ onAuthStateChanged(auth, (user) => {
 
                 btnRegister.addEventListener("click", () => {
 
-                    if (date.value.length != 0) {
-                        if (email.value.length != 0) {
-                            if (name.value.length != 0) {
-                                if (email_father.value.length != 0) {
-                                    if (service.value.length != 0) {
-                                        if (country.value.length != 0) {
+                    if (number.value.length != 0) {
+                        if (date.value.length != 0) {
+                            if (email.value.length != 0) {
+                                if (name.value.length != 0) {
+                                    if (email_father.value.length != 0) {
+                                        if (service.value.length != 0) {
+                                            if (country.value.length != 0) {
 
-                                            addDoc(collection(db, "Users", "SUw3PRfA", "Private_Data"), {
-                                                Nombre: name.value,
-                                                Correo: email.value,
-                                                Correo_Padre: email_father.value,
-                                                Servicio: service.value,
-                                                Pais: country.value,
-                                                Fecha: date.value,
-                                                Estado: "Activo"
-                                            });
+                                                addDoc(collection(db, "Users", "SUw3PRfA", "Private_Data"), {
+                                                    Nombre: name.value,
+                                                    Correo: email.value,
+                                                    Correo_Padre: email_father.value,
+                                                    Servicio: service.value,
+                                                    Pais: country.value,
+                                                    Fecha: date.value,
+                                                    Telefono: number.value,
+                                                    Estado: "Activo"
+                                                });
 
-                                            toast.style.background = "#79cb5f";
-                                            toast.classList.add("active");
-                                            pToast.textContent = "Ya registramos tu usuario " + name.value;
-                                            setTimeout(() => toast.classList.remove("active"), 3000);
+                                                toast.style.background = "#79cb5f";
+                                                toast.classList.add("active");
+                                                pToast.textContent = "Ya registramos tu usuario " + name.value;
+                                                setTimeout(() => toast.classList.remove("active"), 3000);
 
+                                            } else {
+                                                toast.style.background = "#e15a5a";
+                                                toast.classList.add("active");
+                                                pToast.textContent = "Debes elegir un país";
+                                                setTimeout(() => toast.classList.remove("active"), 3000);
+                                            }
                                         } else {
                                             toast.style.background = "#e15a5a";
                                             toast.classList.add("active");
-                                            pToast.textContent = "Debes elegir un país";
+                                            pToast.textContent = "Debes elegir los servicios";
                                             setTimeout(() => toast.classList.remove("active"), 3000);
                                         }
                                     } else {
                                         toast.style.background = "#e15a5a";
                                         toast.classList.add("active");
-                                        pToast.textContent = "Debes elegir los servicios";
+                                        pToast.textContent = "Debes digitar correo padre";
                                         setTimeout(() => toast.classList.remove("active"), 3000);
                                     }
                                 } else {
                                     toast.style.background = "#e15a5a";
                                     toast.classList.add("active");
-                                    pToast.textContent = "Debes digitar correo padre";
+                                    pToast.textContent = "Debes digitar un nombre";
                                     setTimeout(() => toast.classList.remove("active"), 3000);
                                 }
                             } else {
                                 toast.style.background = "#e15a5a";
                                 toast.classList.add("active");
-                                pToast.textContent = "Debes digitar un nombre";
+                                pToast.textContent = "Debes digitar un Email";
                                 setTimeout(() => toast.classList.remove("active"), 3000);
                             }
                         } else {
                             toast.style.background = "#e15a5a";
                             toast.classList.add("active");
-                            pToast.textContent = "Debes digitar un Email";
+                            pToast.textContent = "Debes ingresar la fecha de inicio de la(s) suscripcion(es)";
                             setTimeout(() => toast.classList.remove("active"), 3000);
                         }
                     } else {
                         toast.style.background = "#e15a5a";
-                            toast.classList.add("active");
-                            pToast.textContent = "Debes ingresar la fecha de inicio de la(s) suscripcion(es)";
-                            setTimeout(() => toast.classList.remove("active"), 3000);
+                        toast.classList.add("active");
+                        pToast.textContent = "Debes ingresar el numero de telefono";
+                        setTimeout(() => toast.classList.remove("active"), 3000);
                     }
 
                 });

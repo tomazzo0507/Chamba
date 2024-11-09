@@ -25,7 +25,7 @@ body {
 
 .cont {
     width: 40%;
-    height: 600px;
+    height: 650px;
     border-radius: 20px;
     display: flex;
     align-items: center;
@@ -118,7 +118,7 @@ body {
     width: 0;
 }
 
-.cont .input:nth-child(6) input,
+.cont .input:nth-child(9) input,
 .cont .input:nth-child(7) textarea {
     cursor: pointer;
 }
@@ -614,12 +614,12 @@ body {
     body {
         display: flex;
         align-items: start;
-        height: 100vh;
+        height: 100%;
     }
 
     .cont {
-        margin-top: 1rem;
-        margin-bottom: 1rem;
+        margin-top: 3rem;
+        margin-bottom: 5rem;
     }
 }
 

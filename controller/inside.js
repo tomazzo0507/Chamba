@@ -486,6 +486,7 @@ onAuthStateChanged(auth, (user) => {
                     var nombre = document.createElement('th')
                     var correo = document.createElement('th')
                     var cuenta_padre = document.createElement('th')
+                    var number = document.createElement('th')
                     var img_servicio
                     var servicio = document.createElement('th')
                     var cont_servicio = document.createElement('div')
@@ -495,6 +496,7 @@ onAuthStateChanged(auth, (user) => {
                     nombre.textContent = doc.data().Nombre
                     correo.textContent = doc.data().Correo
                     cuenta_padre.textContent = doc.data().Correo_Padre
+                    number.textContent = doc.data().Telefono
 
                     let servicios = doc.data().Servicio.split(", ")
 
@@ -624,6 +626,7 @@ onAuthStateChanged(auth, (user) => {
                     tr.appendChild(nombre)
                     tr.appendChild(correo)
                     tr.appendChild(cuenta_padre)
+                    tr.appendChild(number)
                     tr.appendChild(servicio)
                     tr.appendChild(estado)
                     servicio.appendChild(cont_servicio)

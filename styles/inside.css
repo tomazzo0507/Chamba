@@ -1324,7 +1324,7 @@ table tbody tr th p.reserva {
     right: 0;
 }
 
-@media (width < 1100px) {
+@media (width < 1300px) {
     .default {
         overflow: hidden;
         overflow-x: auto;

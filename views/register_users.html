@@ -7,6 +7,9 @@
     <title>Registro Usuarios</title>
     <link rel="stylesheet" href="/styles/register_user.css">
     <script src="https://kit.fontawesome.com/460146b1b8.js" crossorigin="anonymous"></script>
+    <!-- Flat Picker -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </head>
 
 <body>
@@ -29,14 +32,19 @@
         </div>
 
         <div class="input">
+            <i class="fa-solid fa-phone"></i>
+            <input class="number" type="text" id="number" placeholder="Numero del usuario" autocomplete="off">
+        </div>
+
+        <div class="input">
             <i class="fa-brands fa-amazon"></i>
             <textarea class="servicio" id="service" placeholder="Selecciona el servicio" autocomplete="off"></textarea>
             <i class="fa-solid fa-trash" id="clean_service"></i>
         </div>
 
         <div class="input">
-            <i class="fa-solid fa-earth-americas"></i>
-            <input class="fecha" type="date" id="date" placeholder="Selecciona la fecha" autocomplete="off">
+            <i class="fa-solid fa-calendar-days"></i>
+            <input class="fecha" type="text" id="date" placeholder="Selecciona la fecha" autocomplete="off">
         </div>
 
         <div class="input">
