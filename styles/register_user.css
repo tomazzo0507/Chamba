@@ -615,6 +615,7 @@ body {
         display: flex;
         align-items: start;
         height: 100%;
+        width: 100%;
     }
 
     .cont {

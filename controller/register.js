@@ -19,9 +19,15 @@ const db = getFirestore(app);
 onAuthStateChanged(auth, (user) => {
     if (user) {
         const uid = user.uid;
-        
+
         var toast = document.querySelector(".toast");
         var pToast = document.querySelector(".p_toast");
+
+        const fecha = new Date();
+        const dia = String(fecha.getDate()).padStart(2, '0');
+        const mes = String(fecha.getMonth() + 1).padStart(2, '0');
+        const año = String(fecha.getFullYear()).slice(-2);
+        const fechaFormateada = `${dia}/${mes}/${año}`;
 
         getDocs(query(collection(db, "Admins", user.uid, "Private_Data"), where("Id", "==", user.uid)))
             .then((querySnapshot) => {
@@ -53,6 +59,7 @@ onAuthStateChanged(auth, (user) => {
                                                                     Nombre: name.value,
                                                                     Rol: "Empleado",
                                                                     DarkMode: "desactive",
+                                                                    Fecha: fechaFormateada,
                                                                     URL: ""
                                                                 });
                                                                 addDoc(collection(db, "Admins_Entity", "Admins", "Private_Data"), {
@@ -61,6 +68,7 @@ onAuthStateChanged(auth, (user) => {
                                                                     Nombre: name.value,
                                                                     Rol: "Empleado",
                                                                     DarkMode: "desactive",
+                                                                    Fecha: fechaFormateada,
                                                                     URL: ""
                                                                 })
                                                             })

@@ -247,187 +247,219 @@ onAuthStateChanged(auth, (user) => {
         var tbody = document.querySelector('.tbody')
         var service = document.querySelector('.select_service')
 
-        getDocs(collection(db, "Users", "SUw3PRfA", "Private_Data"))
-            .then((querySnapshot) => {
-                querySnapshot.forEach((doc) => {
+        var btn_fecha = document.querySelector('.date')
+        var fecha = document.querySelector('.select_fecha')
 
-                    var tr = document.createElement('tr')
-                    var nombre = document.createElement('th')
-                    var correo = document.createElement('th')
-                    var cuenta_padre = document.createElement('th')
-                    var number = document.createElement('th')
-                    var img_servicio
-                    var servicio = document.createElement('th')
-                    var cont_servicio = document.createElement('div')
-                    var estado = document.createElement('th')
-                    var p_estado = document.createElement('p')
+        var fecha_p = document.querySelectorAll('.fecha p')
 
-                    nombre.textContent = doc.data().Nombre
-                    correo.textContent = doc.data().Correo
-                    cuenta_padre.textContent = doc.data().Correo_Padre
-                    number.textContent = doc.data().Telefono
+        fecha.classList.add('active')
 
-                    let servicios = doc.data().Servicio.split(", ")
+        btn_fecha.addEventListener('click', () => {
+            fecha.classList.toggle('active')
+            window.addEventListener('click', event => {
+                if (event.target == fecha) {
+                    fecha.classList.remove('active')
+                }
+            })
+        })
 
-                    if (servicios.length > 1) {
-                        p_estado.addEventListener('click', () => {
-                            service.classList.toggle('active')
-    
-                            window.addEventListener('click', event => {
-                                if (event.target == service) {
-                                    service.classList.remove('active')
+        var fechaSeleccionada = ""
+
+        fecha_p.forEach((elemento) => {
+            elemento.addEventListener('click', () => {
+                fecha.classList.remove('active')
+                fechaSeleccionada = elemento.textContent
+
+                tbody.innerHTML = ""
+
+                getDocs(collection(db, "Users", "SUw3PRfA", "Private_Data"))
+                    .then((querySnapshot) => {
+                        querySnapshot.forEach((doc) => {
+
+                            var diaUser = doc.data().Fecha.split("/")[0]
+
+                            if (fechaSeleccionada == diaUser) {
+                                var tr = document.createElement('tr')
+                                var nombre = document.createElement('th')
+                                var correo = document.createElement('th')
+                                var cuenta_padre = document.createElement('th')
+                                var number = document.createElement('th')
+                                var img_servicio
+                                var servicio = document.createElement('th')
+                                var cont_servicio = document.createElement('div')
+                                var estado = document.createElement('th')
+                                var p_estado = document.createElement('p')
+
+                                nombre.textContent = doc.data().Nombre
+                                correo.textContent = doc.data().Correo
+                                cuenta_padre.textContent = doc.data().Correo_Padre
+                                number.textContent = doc.data().Telefono
+
+                                let servicios = doc.data().Servicio.split(", ")
+
+                                if (servicios.length > 1) {
+                                    p_estado.addEventListener('click', () => {
+                                        service.classList.toggle('active')
+
+                                        window.addEventListener('click', event => {
+                                            if (event.target == service) {
+                                                service.classList.remove('active')
+                                            }
+                                        })
+
+                                    })
+
+                                    cont_servicio.className = "servicios"
+
+                                    for (var i = 0; i < servicios.length; i++) {
+                                        img_servicio = document.createElement("img")
+
+                                        if (servicios[i] == "Prime Video") {
+                                            img_servicio.src = "/assets/logo_prime.png"
+                                        }
+
+                                        if (servicios[i] == "Netflix") {
+                                            img_servicio.src = "/assets/logo_netflix.png"
+                                        }
+
+                                        if (servicios[i] == "Spotify") {
+                                            img_servicio.src = "/assets/logo_spotify.jpg"
+                                        }
+
+                                        if (servicios[i] == "Vix") {
+                                            img_servicio.src = "/assets/logo_vix.jpg"
+                                        }
+
+                                        if (servicios[i] == "HBO") {
+                                            img_servicio.src = "/assets/logo_hbo.png"
+                                        }
+
+                                        if (servicios[i] == "Disney+") {
+                                            img_servicio.src = "/assets/logo_disney.jpg"
+                                        }
+
+                                        if (servicios[i] == "Disney+ Premium") {
+                                            img_servicio.src = "/assets/logo_disneypremium.png"
+                                        }
+
+                                        if (servicios[i] == "Paramount+") {
+                                            img_servicio.src = "/assets/logo_paramount.png"
+                                        }
+
+                                        if (servicios[i] == "DirecTV") {
+                                            img_servicio.src = "/assets/logo_directv.png"
+                                        }
+
+                                        if (servicios[i] == "Crunchyroll") {
+                                            img_servicio.src = "/assets/logo_crunchyroll.png"
+                                        }
+
+                                        if (servicios[i] == "YouTube") {
+                                            img_servicio.src = "/assets/logo_youtube.png"
+                                        }
+
+                                        if (servicios[i] == "Apple TV") {
+                                            img_servicio.src = "/assets/logo_apple.png"
+                                        }
+
+                                        if (servicios.length > 6) {
+                                            cont_servicio.style.display = "grid"
+                                            cont_servicio.style.gridTemplateColumns = "1fr 1fr 1fr 1fr 1fr 1fr"
+                                        }
+
+                                        cont_servicio.appendChild(img_servicio)
+                                    }
+
+                                } else {
+
+                                    p_estado.addEventListener('click', () => {
+                                        alert(`Cobro enviado por pago de ${doc.data().Servicio}`)
+                                    })
+
+                                    img_servicio = document.createElement('img')
+
+                                    cont_servicio.className = "servicio"
+
+                                    if (doc.data().Servicio == "Prime Video") {
+                                        img_servicio.src = "/assets/logo_prime.png"
+                                    }
+
+                                    if (doc.data().Servicio == "Netflix") {
+                                        img_servicio.src = "/assets/logo_netflix.png"
+                                    }
+
+                                    if (doc.data().Servicio == "Spotify") {
+                                        img_servicio.src = "/assets/logo_spotify.jpg"
+                                    }
+
+                                    if (doc.data().Servicio == "Vix") {
+                                        img_servicio.src = "/assets/logo_vix.jpg"
+                                    }
+
+                                    if (doc.data().Servicio == "Disney+") {
+                                        img_servicio.src = "/assets/logo_disney.jpg"
+                                    }
+
+                                    if (doc.data().Servicio == "Disney+ Premium") {
+                                        img_servicio.src = "/assets/logo_disneypremium.png"
+                                    }
+
+                                    if (doc.data().Servicio == "Paramount+") {
+                                        img_servicio.src = "/assets/logo_paramount.png"
+                                    }
+
+                                    if (doc.data().Servicio == "DirectTv") {
+                                        img_servicio.src = "/assets/logo_.png"
+                                    }
+
+                                    if (doc.data().Servicio == "Crunchyroll") {
+                                        img_servicio.src = "/assets/logo_crunchyroll.png"
+                                    }
+
+                                    if (doc.data().Servicio == "Youtube") {
+                                        img_servicio.src = "/assets/logo_youtube.png"
+                                    }
+
+                                    if (doc.data().Servicio == "Apple TV") {
+                                        img_servicio.src = "/assets/logo_apple.png"
+                                    }
+
+                                    cont_servicio.appendChild(img_servicio)
+
                                 }
-                            })
-    
-                        })
 
-                        cont_servicio.className = "servicios"
+                                p_estado.textContent = "Cobrar"
+                                p_estado.className = "inactivo"
 
-                        for (var i = 0; i < servicios.length; i++) {
-                            img_servicio = document.createElement("img")
+                                tbody.appendChild(tr)
+                                tr.appendChild(nombre)
+                                tr.appendChild(correo)
+                                tr.appendChild(cuenta_padre)
+                                tr.appendChild(number)
+                                tr.appendChild(servicio)
+                                tr.appendChild(estado)
+                                servicio.appendChild(cont_servicio)
+                                estado.appendChild(p_estado)
 
-                            if (servicios[i] == "Prime Video") {
-                                img_servicio.src = "/assets/logo_prime.png"
+                                // pay
+
+                                var payAll = document.querySelector('#payAll')
+
+                                payAll.addEventListener('click', () => {
+                                    service.classList.toggle('active')
+
+                                    window.addEventListener('click', event => {
+                                        if (event.target == service) {
+                                            service.classList.remove('active')
+                                        }
+                                    })
+                                })
                             }
 
-                            if (servicios[i] == "Netflix") {
-                                img_servicio.src = "/assets/logo_netflix.png"
-                            }
-
-                            if (servicios[i] == "Spotify") {
-                                img_servicio.src = "/assets/logo_spotify.jpg"
-                            }
-
-                            if (servicios[i] == "Vix") {
-                                img_servicio.src = "/assets/logo_vix.jpg"
-                            }
-
-                            if (servicios[i] == "HBO") {
-                                img_servicio.src = "/assets/logo_hbo.png"
-                            }
-
-                            if (servicios[i] == "Disney+") {
-                                img_servicio.src = "/assets/logo_disney.jpg"
-                            }
-
-                            if (servicios[i] == "Disney+ Premium") {
-                                img_servicio.src = "/assets/logo_disneypremium.png"
-                            }
-
-                            if (servicios[i] == "Paramount+") {
-                                img_servicio.src = "/assets/logo_paramount.png"
-                            }
-
-                            if (servicios[i] == "DirecTV") {
-                                img_servicio.src = "/assets/logo_directv.png"
-                            }
-
-                            if (servicios[i] == "Crunchyroll") {
-                                img_servicio.src = "/assets/logo_crunchyroll.png"
-                            }
-
-                            if (servicios[i] == "YouTube") {
-                                img_servicio.src = "/assets/logo_youtube.png"
-                            }
-
-                            if (servicios[i] == "Apple TV") {
-                                img_servicio.src = "/assets/logo_apple.png"
-                            }
-
-                            if (servicios.length > 6) {
-                                cont_servicio.style.display = "grid"
-                                cont_servicio.style.gridTemplateColumns = "1fr 1fr 1fr 1fr 1fr 1fr"
-                            }
-
-                            cont_servicio.appendChild(img_servicio)
-                        }
-
-                    } else {
-
-                        p_estado.addEventListener('click', () => {
-                            alert(`Cobro enviado por pago de ${doc.data().Servicio}`)
-                        })
-
-                        img_servicio = document.createElement('img')
-
-                        cont_servicio.className = "servicio"
-
-                        if (doc.data().Servicio == "Prime Video") {
-                            img_servicio.src = "/assets/logo_prime.png"
-                        }
-
-                        if (doc.data().Servicio == "Netflix") {
-                            img_servicio.src = "/assets/logo_netflix.png"
-                        }
-
-                        if (doc.data().Servicio == "Spotify") {
-                            img_servicio.src = "/assets/logo_spotify.jpg"
-                        }
-
-                        if (doc.data().Servicio == "Vix") {
-                            img_servicio.src = "/assets/logo_vix.jpg"
-                        }
-
-                        if (doc.data().Servicio == "Disney+") {
-                            img_servicio.src = "/assets/logo_disney.jpg"
-                        }
-
-                        if (doc.data().Servicio == "Disney+ Premium") {
-                            img_servicio.src = "/assets/logo_disneypremium.png"
-                        }
-
-                        if (doc.data().Servicio == "Paramount+") {
-                            img_servicio.src = "/assets/logo_paramount.png"
-                        }
-
-                        if (doc.data().Servicio == "DirectTv") {
-                            img_servicio.src = "/assets/logo_.png"
-                        }
-
-                        if (doc.data().Servicio == "Crunchyroll") {
-                            img_servicio.src = "/assets/logo_crunchyroll.png"
-                        }
-
-                        if (doc.data().Servicio == "Youtube") {
-                            img_servicio.src = "/assets/logo_youtube.png"
-                        }
-
-                        if (doc.data().Servicio == "Apple TV") {
-                            img_servicio.src = "/assets/logo_apple.png"
-                        }
-
-                        cont_servicio.appendChild(img_servicio)
-
-                    }
-
-                    p_estado.textContent = "Cobrar"
-                    p_estado.className = "inactivo"
-
-                    tbody.appendChild(tr)
-                    tr.appendChild(nombre)
-                    tr.appendChild(correo)
-                    tr.appendChild(cuenta_padre)
-                    tr.appendChild(number)
-                    tr.appendChild(servicio)
-                    tr.appendChild(estado)
-                    servicio.appendChild(cont_servicio)
-                    estado.appendChild(p_estado)
-
-                    // pay
-
-                    var payAll = document.querySelector('#payAll')
-
-                    payAll.addEventListener('click', () => {
-                        service.classList.toggle('active')
-
-                        window.addEventListener('click', event => {
-                            if (event.target == service) {
-                                service.classList.remove('active')
-                            }
                         })
                     })
-                })
             })
+        })
 
     } else {
         var out = document.querySelector('.out')

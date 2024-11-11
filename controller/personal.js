@@ -275,7 +275,7 @@ onAuthStateChanged(auth, (user) => {
 
                     nombre.textContent = doc.data().Nombre
                     correo.textContent = doc.data().Correo
-                    fecha.textContent = ""
+                    fecha.textContent = doc.data().Fecha
                     deleteButton.textContent = "Eliminar"
 
                     deleteButton.className = "inactivo"

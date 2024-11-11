@@ -268,61 +268,1141 @@ onAuthStateChanged(auth, (user) => {
         disney.addEventListener("click", () => {
             service.style.display = "none";
             table.style.display = "";
+
+            var tbody = document.querySelector('.tbody')
+            tbody.innerHTML = ""
+
+            getDocs(collection(db, "Users", "SUw3PRfA", "Private_Data"))
+                .then((querySnapshot) => {
+                    querySnapshot.forEach((doc) => {
+
+                        if (doc.data().Servicio == "Disney+") {
+                            var tbody = document.querySelector('.tbody')
+                            var tr = document.createElement('tr')
+                            var nombre = document.createElement('th')
+                            var correo = document.createElement('th')
+                            var cuentaPadre = document.createElement('th')
+                            var fecha = document.createElement('th')
+                            var th_servicio = document.createElement('th')
+                            var div_servicio = document.createElement('div')
+                            var img_servicio = document.createElement('img')
+                            var th_estado = document.createElement('th')
+                            var estado = document.createElement('p')
+
+                            nombre.textContent = doc.data().Nombre
+                            correo.textContent = doc.data().Correo
+                            cuentaPadre.textContent = doc.data().Correo_Padre
+                            fecha.textContent = doc.data().Fecha
+                            img_servicio.src = "/assets/logo_disney.jpg"
+                            estado.textContent = doc.data().Estado
+
+                            div_servicio.className = "servicio"
+                            estado.className = doc.data().Estado.toLowerCase()
+                            estado.style.cursor = "auto"
+
+
+                            tbody.appendChild(tr)
+                            tr.appendChild(nombre)
+                            tr.appendChild(correo)
+                            tr.appendChild(cuentaPadre)
+                            tr.appendChild(fecha)
+                            tr.appendChild(th_servicio)
+                            tr.appendChild(th_estado)
+                            th_servicio.appendChild(div_servicio)
+                            div_servicio.appendChild(img_servicio)
+                            th_estado.appendChild(estado)
+                        }
+
+                        let servicios = doc.data().Servicio.split(", ")
+
+                        if (servicios.length > 1) {
+                            for (var i = 0; i < servicios.length; i++) {
+                                if (servicios[i] == "Disney+") {
+                                    var tbody = document.querySelector('.tbody')
+                                    var tr = document.createElement('tr')
+                                    var nombre = document.createElement('th')
+                                    var correo = document.createElement('th')
+                                    var cuentaPadre = document.createElement('th')
+                                    var fecha = document.createElement('th')
+                                    var th_servicio = document.createElement('th')
+                                    var div_servicio = document.createElement('div')
+                                    var img_servicio = document.createElement('img')
+                                    var th_estado = document.createElement('th')
+                                    var estado = document.createElement('p')
+
+                                    nombre.textContent = doc.data().Nombre
+                                    correo.textContent = doc.data().Correo
+                                    cuentaPadre.textContent = doc.data().Correo_Padre
+                                    fecha.textContent = doc.data().Fecha
+                                    img_servicio.src = "/assets/logo_disney.jpg"
+                                    estado.textContent = doc.data().Estado
+
+                                    div_servicio.className = "servicio"
+                                    estado.className = doc.data().Estado.toLowerCase()
+                                    estado.style.cursor = "auto"
+
+
+                                    tbody.appendChild(tr)
+                                    tr.appendChild(nombre)
+                                    tr.appendChild(correo)
+                                    tr.appendChild(cuentaPadre)
+                                    tr.appendChild(fecha)
+                                    tr.appendChild(th_servicio)
+                                    tr.appendChild(th_estado)
+                                    th_servicio.appendChild(div_servicio)
+                                    div_servicio.appendChild(img_servicio)
+                                    th_estado.appendChild(estado)
+                                }
+                            }
+                        }
+
+                    })
+                })
         });
 
         apple.addEventListener("click", () => {
             service.style.display = "none";
             table.style.display = "";
+
+            var tbody = document.querySelector('.tbody')
+            tbody.innerHTML = ""
+
+            getDocs(collection(db, "Users", "SUw3PRfA", "Private_Data"))
+                .then((querySnapshot) => {
+                    querySnapshot.forEach((doc) => {
+
+                        if (doc.data().Servicio == "Apple TV") {
+                            var tbody = document.querySelector('.tbody')
+                            var tr = document.createElement('tr')
+                            var nombre = document.createElement('th')
+                            var correo = document.createElement('th')
+                            var cuentaPadre = document.createElement('th')
+                            var fecha = document.createElement('th')
+                            var th_servicio = document.createElement('th')
+                            var div_servicio = document.createElement('div')
+                            var img_servicio = document.createElement('img')
+                            var th_estado = document.createElement('th')
+                            var estado = document.createElement('p')
+
+                            nombre.textContent = doc.data().Nombre
+                            correo.textContent = doc.data().Correo
+                            cuentaPadre.textContent = doc.data().Correo_Padre
+                            fecha.textContent = doc.data().Fecha
+                            img_servicio.src = "/assets/logo_apple.png"
+                            estado.textContent = doc.data().Estado
+
+                            div_servicio.className = "servicio"
+                            estado.className = doc.data().Estado.toLowerCase()
+                            estado.style.cursor = "auto"
+
+
+                            tbody.appendChild(tr)
+                            tr.appendChild(nombre)
+                            tr.appendChild(correo)
+                            tr.appendChild(cuentaPadre)
+                            tr.appendChild(fecha)
+                            tr.appendChild(th_servicio)
+                            tr.appendChild(th_estado)
+                            th_servicio.appendChild(div_servicio)
+                            div_servicio.appendChild(img_servicio)
+                            th_estado.appendChild(estado)
+                        }
+
+                        let servicios = doc.data().Servicio.split(", ")
+
+                        if (servicios.length > 1) {
+                            for (var i = 0; i < servicios.length; i++) {
+                                if (servicios[i] == "Apple TV") {
+                                    var tbody = document.querySelector('.tbody')
+                                    var tr = document.createElement('tr')
+                                    var nombre = document.createElement('th')
+                                    var correo = document.createElement('th')
+                                    var cuentaPadre = document.createElement('th')
+                                    var fecha = document.createElement('th')
+                                    var th_servicio = document.createElement('th')
+                                    var div_servicio = document.createElement('div')
+                                    var img_servicio = document.createElement('img')
+                                    var th_estado = document.createElement('th')
+                                    var estado = document.createElement('p')
+
+                                    nombre.textContent = doc.data().Nombre
+                                    correo.textContent = doc.data().Correo
+                                    cuentaPadre.textContent = doc.data().Correo_Padre
+                                    fecha.textContent = doc.data().Fecha
+                                    img_servicio.src = "/assets/logo_apple.png"
+                                    estado.textContent = doc.data().Estado
+
+                                    div_servicio.className = "servicio"
+                                    estado.className = doc.data().Estado.toLowerCase()
+                                    estado.style.cursor = "auto"
+
+
+                                    tbody.appendChild(tr)
+                                    tr.appendChild(nombre)
+                                    tr.appendChild(correo)
+                                    tr.appendChild(cuentaPadre)
+                                    tr.appendChild(fecha)
+                                    tr.appendChild(th_servicio)
+                                    tr.appendChild(th_estado)
+                                    th_servicio.appendChild(div_servicio)
+                                    div_servicio.appendChild(img_servicio)
+                                    th_estado.appendChild(estado)
+                                }
+                            }
+                        }
+
+                    })
+                })
         });
 
         hbo.addEventListener("click", () => {
             service.style.display = "none";
             table.style.display = "";
+
+            var tbody = document.querySelector('.tbody')
+            tbody.innerHTML = ""
+
+            getDocs(collection(db, "Users", "SUw3PRfA", "Private_Data"))
+                .then((querySnapshot) => {
+                    querySnapshot.forEach((doc) => {
+
+                        if (doc.data().Servicio == "HBO") {
+                            var tbody = document.querySelector('.tbody')
+                            var tr = document.createElement('tr')
+                            var nombre = document.createElement('th')
+                            var correo = document.createElement('th')
+                            var cuentaPadre = document.createElement('th')
+                            var fecha = document.createElement('th')
+                            var th_servicio = document.createElement('th')
+                            var div_servicio = document.createElement('div')
+                            var img_servicio = document.createElement('img')
+                            var th_estado = document.createElement('th')
+                            var estado = document.createElement('p')
+
+                            nombre.textContent = doc.data().Nombre
+                            correo.textContent = doc.data().Correo
+                            cuentaPadre.textContent = doc.data().Correo_Padre
+                            fecha.textContent = doc.data().Fecha
+                            img_servicio.src = "/assets/logo_hbo.png"
+                            estado.textContent = doc.data().Estado
+
+                            div_servicio.className = "servicio"
+                            estado.className = doc.data().Estado.toLowerCase()
+                            estado.style.cursor = "auto"
+
+
+                            tbody.appendChild(tr)
+                            tr.appendChild(nombre)
+                            tr.appendChild(correo)
+                            tr.appendChild(cuentaPadre)
+                            tr.appendChild(fecha)
+                            tr.appendChild(th_servicio)
+                            tr.appendChild(th_estado)
+                            th_servicio.appendChild(div_servicio)
+                            div_servicio.appendChild(img_servicio)
+                            th_estado.appendChild(estado)
+                        }
+
+                        let servicios = doc.data().Servicio.split(", ")
+
+                        if (servicios.length > 1) {
+                            for (var i = 0; i < servicios.length; i++) {
+                                if (servicios[i] == "HBO") {
+                                    var tbody = document.querySelector('.tbody')
+                                    var tr = document.createElement('tr')
+                                    var nombre = document.createElement('th')
+                                    var correo = document.createElement('th')
+                                    var cuentaPadre = document.createElement('th')
+                                    var fecha = document.createElement('th')
+                                    var th_servicio = document.createElement('th')
+                                    var div_servicio = document.createElement('div')
+                                    var img_servicio = document.createElement('img')
+                                    var th_estado = document.createElement('th')
+                                    var estado = document.createElement('p')
+
+                                    nombre.textContent = doc.data().Nombre
+                                    correo.textContent = doc.data().Correo
+                                    cuentaPadre.textContent = doc.data().Correo_Padre
+                                    fecha.textContent = doc.data().Fecha
+                                    img_servicio.src = "/assets/logo_hbo.png"
+                                    estado.textContent = doc.data().Estado
+
+                                    div_servicio.className = "servicio"
+                                    estado.className = doc.data().Estado.toLowerCase()
+                                    estado.style.cursor = "auto"
+
+
+                                    tbody.appendChild(tr)
+                                    tr.appendChild(nombre)
+                                    tr.appendChild(correo)
+                                    tr.appendChild(cuentaPadre)
+                                    tr.appendChild(fecha)
+                                    tr.appendChild(th_servicio)
+                                    tr.appendChild(th_estado)
+                                    th_servicio.appendChild(div_servicio)
+                                    div_servicio.appendChild(img_servicio)
+                                    th_estado.appendChild(estado)
+                                }
+                            }
+                        }
+
+                    })
+                })
         });
 
         netflix.addEventListener("click", () => {
             service.style.display = "none";
             table.style.display = "";
+
+            var tbody = document.querySelector('.tbody')
+            tbody.innerHTML = ""
+
+            getDocs(collection(db, "Users", "SUw3PRfA", "Private_Data"))
+                .then((querySnapshot) => {
+                    querySnapshot.forEach((doc) => {
+
+                        if (doc.data().Servicio == "Netflix") {
+                            var tbody = document.querySelector('.tbody')
+                            var tr = document.createElement('tr')
+                            var nombre = document.createElement('th')
+                            var correo = document.createElement('th')
+                            var cuentaPadre = document.createElement('th')
+                            var fecha = document.createElement('th')
+                            var th_servicio = document.createElement('th')
+                            var div_servicio = document.createElement('div')
+                            var img_servicio = document.createElement('img')
+                            var th_estado = document.createElement('th')
+                            var estado = document.createElement('p')
+
+                            nombre.textContent = doc.data().Nombre
+                            correo.textContent = doc.data().Correo
+                            cuentaPadre.textContent = doc.data().Correo_Padre
+                            fecha.textContent = doc.data().Fecha
+                            img_servicio.src = "/assets/logo_netflix.png"
+                            estado.textContent = doc.data().Estado
+
+                            div_servicio.className = "servicio"
+                            estado.className = doc.data().Estado.toLowerCase()
+                            estado.style.cursor = "auto"
+
+
+                            tbody.appendChild(tr)
+                            tr.appendChild(nombre)
+                            tr.appendChild(correo)
+                            tr.appendChild(cuentaPadre)
+                            tr.appendChild(fecha)
+                            tr.appendChild(th_servicio)
+                            tr.appendChild(th_estado)
+                            th_servicio.appendChild(div_servicio)
+                            div_servicio.appendChild(img_servicio)
+                            th_estado.appendChild(estado)
+                        }
+
+                        let servicios = doc.data().Servicio.split(", ")
+
+                        if (servicios.length > 1) {
+                            for (var i = 0; i < servicios.length; i++) {
+                                if (servicios[i] == "Netflix") {
+                                    var tbody = document.querySelector('.tbody')
+                                    var tr = document.createElement('tr')
+                                    var nombre = document.createElement('th')
+                                    var correo = document.createElement('th')
+                                    var cuentaPadre = document.createElement('th')
+                                    var fecha = document.createElement('th')
+                                    var th_servicio = document.createElement('th')
+                                    var div_servicio = document.createElement('div')
+                                    var img_servicio = document.createElement('img')
+                                    var th_estado = document.createElement('th')
+                                    var estado = document.createElement('p')
+
+                                    nombre.textContent = doc.data().Nombre
+                                    correo.textContent = doc.data().Correo
+                                    cuentaPadre.textContent = doc.data().Correo_Padre
+                                    fecha.textContent = doc.data().Fecha
+                                    img_servicio.src = "/assets/logo_netflix.png"
+                                    estado.textContent = doc.data().Estado
+
+                                    div_servicio.className = "servicio"
+                                    estado.className = doc.data().Estado.toLowerCase()
+                                    estado.style.cursor = "auto"
+
+
+                                    tbody.appendChild(tr)
+                                    tr.appendChild(nombre)
+                                    tr.appendChild(correo)
+                                    tr.appendChild(cuentaPadre)
+                                    tr.appendChild(fecha)
+                                    tr.appendChild(th_servicio)
+                                    tr.appendChild(th_estado)
+                                    th_servicio.appendChild(div_servicio)
+                                    div_servicio.appendChild(img_servicio)
+                                    th_estado.appendChild(estado)
+                                }
+                            }
+                        }
+
+                    })
+                })
         });
 
         paramount.addEventListener("click", () => {
             service.style.display = "none";
             table.style.display = "";
+
+            var tbody = document.querySelector('.tbody')
+            tbody.innerHTML = ""
+
+            getDocs(collection(db, "Users", "SUw3PRfA", "Private_Data"))
+                .then((querySnapshot) => {
+                    querySnapshot.forEach((doc) => {
+
+                        if (doc.data().Servicio == "Paramount+") {
+                            var tbody = document.querySelector('.tbody')
+                            var tr = document.createElement('tr')
+                            var nombre = document.createElement('th')
+                            var correo = document.createElement('th')
+                            var cuentaPadre = document.createElement('th')
+                            var fecha = document.createElement('th')
+                            var th_servicio = document.createElement('th')
+                            var div_servicio = document.createElement('div')
+                            var img_servicio = document.createElement('img')
+                            var th_estado = document.createElement('th')
+                            var estado = document.createElement('p')
+
+                            nombre.textContent = doc.data().Nombre
+                            correo.textContent = doc.data().Correo
+                            cuentaPadre.textContent = doc.data().Correo_Padre
+                            fecha.textContent = doc.data().Fecha
+                            img_servicio.src = "/assets/logo_paramount.png"
+                            estado.textContent = doc.data().Estado
+
+                            div_servicio.className = "servicio"
+                            estado.className = doc.data().Estado.toLowerCase()
+                            estado.style.cursor = "auto"
+
+
+                            tbody.appendChild(tr)
+                            tr.appendChild(nombre)
+                            tr.appendChild(correo)
+                            tr.appendChild(cuentaPadre)
+                            tr.appendChild(fecha)
+                            tr.appendChild(th_servicio)
+                            tr.appendChild(th_estado)
+                            th_servicio.appendChild(div_servicio)
+                            div_servicio.appendChild(img_servicio)
+                            th_estado.appendChild(estado)
+                        }
+
+                        let servicios = doc.data().Servicio.split(", ")
+
+                        if (servicios.length > 1) {
+                            for (var i = 0; i < servicios.length; i++) {
+                                if (servicios[i] == "Paramount+") {
+                                    var tbody = document.querySelector('.tbody')
+                                    var tr = document.createElement('tr')
+                                    var nombre = document.createElement('th')
+                                    var correo = document.createElement('th')
+                                    var cuentaPadre = document.createElement('th')
+                                    var fecha = document.createElement('th')
+                                    var th_servicio = document.createElement('th')
+                                    var div_servicio = document.createElement('div')
+                                    var img_servicio = document.createElement('img')
+                                    var th_estado = document.createElement('th')
+                                    var estado = document.createElement('p')
+
+                                    nombre.textContent = doc.data().Nombre
+                                    correo.textContent = doc.data().Correo
+                                    cuentaPadre.textContent = doc.data().Correo_Padre
+                                    fecha.textContent = doc.data().Fecha
+                                    img_servicio.src = "/assets/logo_paramount.png"
+                                    estado.textContent = doc.data().Estado
+
+                                    div_servicio.className = "servicio"
+                                    estado.className = doc.data().Estado.toLowerCase()
+                                    estado.style.cursor = "auto"
+
+
+                                    tbody.appendChild(tr)
+                                    tr.appendChild(nombre)
+                                    tr.appendChild(correo)
+                                    tr.appendChild(cuentaPadre)
+                                    tr.appendChild(fecha)
+                                    tr.appendChild(th_servicio)
+                                    tr.appendChild(th_estado)
+                                    th_servicio.appendChild(div_servicio)
+                                    div_servicio.appendChild(img_servicio)
+                                    th_estado.appendChild(estado)
+                                }
+                            }
+                        }
+
+                    })
+                })
         });
 
         prime.addEventListener("click", () => {
             service.style.display = "none";
             table.style.display = "";
+
+            var tbody = document.querySelector('.tbody')
+            tbody.innerHTML = ""
+
+            getDocs(collection(db, "Users", "SUw3PRfA", "Private_Data"))
+                .then((querySnapshot) => {
+                    querySnapshot.forEach((doc) => {
+
+                        if (doc.data().Servicio == "Prime Video") {
+                            var tbody = document.querySelector('.tbody')
+                            var tr = document.createElement('tr')
+                            var nombre = document.createElement('th')
+                            var correo = document.createElement('th')
+                            var cuentaPadre = document.createElement('th')
+                            var fecha = document.createElement('th')
+                            var th_servicio = document.createElement('th')
+                            var div_servicio = document.createElement('div')
+                            var img_servicio = document.createElement('img')
+                            var th_estado = document.createElement('th')
+                            var estado = document.createElement('p')
+
+                            nombre.textContent = doc.data().Nombre
+                            correo.textContent = doc.data().Correo
+                            cuentaPadre.textContent = doc.data().Correo_Padre
+                            fecha.textContent = doc.data().Fecha
+                            img_servicio.src = "/assets/logo_prime.png"
+                            estado.textContent = doc.data().Estado
+
+                            div_servicio.className = "servicio"
+                            estado.className = doc.data().Estado.toLowerCase()
+                            estado.style.cursor = "auto"
+
+
+                            tbody.appendChild(tr)
+                            tr.appendChild(nombre)
+                            tr.appendChild(correo)
+                            tr.appendChild(cuentaPadre)
+                            tr.appendChild(fecha)
+                            tr.appendChild(th_servicio)
+                            tr.appendChild(th_estado)
+                            th_servicio.appendChild(div_servicio)
+                            div_servicio.appendChild(img_servicio)
+                            th_estado.appendChild(estado)
+                        }
+
+                        let servicios = doc.data().Servicio.split(", ")
+
+                        if (servicios.length > 1) {
+                            for (var i = 0; i < servicios.length; i++) {
+                                if (servicios[i] == "Prime Video") {
+                                    var tbody = document.querySelector('.tbody')
+                                    var tr = document.createElement('tr')
+                                    var nombre = document.createElement('th')
+                                    var correo = document.createElement('th')
+                                    var cuentaPadre = document.createElement('th')
+                                    var fecha = document.createElement('th')
+                                    var th_servicio = document.createElement('th')
+                                    var div_servicio = document.createElement('div')
+                                    var img_servicio = document.createElement('img')
+                                    var th_estado = document.createElement('th')
+                                    var estado = document.createElement('p')
+
+                                    nombre.textContent = doc.data().Nombre
+                                    correo.textContent = doc.data().Correo
+                                    cuentaPadre.textContent = doc.data().Correo_Padre
+                                    fecha.textContent = doc.data().Fecha
+                                    img_servicio.src = "/assets/logo_prime.png"
+                                    estado.textContent = doc.data().Estado
+
+                                    div_servicio.className = "servicio"
+                                    estado.className = doc.data().Estado.toLowerCase()
+                                    estado.style.cursor = "auto"
+
+
+                                    tbody.appendChild(tr)
+                                    tr.appendChild(nombre)
+                                    tr.appendChild(correo)
+                                    tr.appendChild(cuentaPadre)
+                                    tr.appendChild(fecha)
+                                    tr.appendChild(th_servicio)
+                                    tr.appendChild(th_estado)
+                                    th_servicio.appendChild(div_servicio)
+                                    div_servicio.appendChild(img_servicio)
+                                    th_estado.appendChild(estado)
+                                }
+                            }
+                        }
+
+                    })
+                })
         });
 
         spotify.addEventListener("click", () => {
             service.style.display = "none";
             table.style.display = "";
+
+            var tbody = document.querySelector('.tbody')
+            tbody.innerHTML = ""
+
+            getDocs(collection(db, "Users", "SUw3PRfA", "Private_Data"))
+                .then((querySnapshot) => {
+                    querySnapshot.forEach((doc) => {
+
+                        if (doc.data().Servicio == "Spotify") {
+                            var tbody = document.querySelector('.tbody')
+                            var tr = document.createElement('tr')
+                            var nombre = document.createElement('th')
+                            var correo = document.createElement('th')
+                            var cuentaPadre = document.createElement('th')
+                            var fecha = document.createElement('th')
+                            var th_servicio = document.createElement('th')
+                            var div_servicio = document.createElement('div')
+                            var img_servicio = document.createElement('img')
+                            var th_estado = document.createElement('th')
+                            var estado = document.createElement('p')
+
+                            nombre.textContent = doc.data().Nombre
+                            correo.textContent = doc.data().Correo
+                            cuentaPadre.textContent = doc.data().Correo_Padre
+                            fecha.textContent = doc.data().Fecha
+                            img_servicio.src = "/assets/logo_spotify.jpg"
+                            estado.textContent = doc.data().Estado
+
+                            div_servicio.className = "servicio"
+                            estado.className = doc.data().Estado.toLowerCase()
+                            estado.style.cursor = "auto"
+
+
+                            tbody.appendChild(tr)
+                            tr.appendChild(nombre)
+                            tr.appendChild(correo)
+                            tr.appendChild(cuentaPadre)
+                            tr.appendChild(fecha)
+                            tr.appendChild(th_servicio)
+                            tr.appendChild(th_estado)
+                            th_servicio.appendChild(div_servicio)
+                            div_servicio.appendChild(img_servicio)
+                            th_estado.appendChild(estado)
+                        }
+
+                        let servicios = doc.data().Servicio.split(", ")
+
+                        if (servicios.length > 1) {
+                            for (var i = 0; i < servicios.length; i++) {
+                                if (servicios[i] == "Spotify") {
+                                    var tbody = document.querySelector('.tbody')
+                                    var tr = document.createElement('tr')
+                                    var nombre = document.createElement('th')
+                                    var correo = document.createElement('th')
+                                    var cuentaPadre = document.createElement('th')
+                                    var fecha = document.createElement('th')
+                                    var th_servicio = document.createElement('th')
+                                    var div_servicio = document.createElement('div')
+                                    var img_servicio = document.createElement('img')
+                                    var th_estado = document.createElement('th')
+                                    var estado = document.createElement('p')
+
+                                    nombre.textContent = doc.data().Nombre
+                                    correo.textContent = doc.data().Correo
+                                    cuentaPadre.textContent = doc.data().Correo_Padre
+                                    fecha.textContent = doc.data().Fecha
+                                    img_servicio.src = "/assets/logo_spotify.jpg"
+                                    estado.textContent = doc.data().Estado
+
+                                    div_servicio.className = "servicio"
+                                    estado.className = doc.data().Estado.toLowerCase()
+                                    estado.style.cursor = "auto"
+
+
+                                    tbody.appendChild(tr)
+                                    tr.appendChild(nombre)
+                                    tr.appendChild(correo)
+                                    tr.appendChild(cuentaPadre)
+                                    tr.appendChild(fecha)
+                                    tr.appendChild(th_servicio)
+                                    tr.appendChild(th_estado)
+                                    th_servicio.appendChild(div_servicio)
+                                    div_servicio.appendChild(img_servicio)
+                                    th_estado.appendChild(estado)
+                                }
+                            }
+                        }
+
+                    })
+                })
         });
 
         youtube.addEventListener("click", () => {
             service.style.display = "none";
             table.style.display = "";
+
+            var tbody = document.querySelector('.tbody')
+            tbody.innerHTML = ""
+
+            getDocs(collection(db, "Users", "SUw3PRfA", "Private_Data"))
+                .then((querySnapshot) => {
+                    querySnapshot.forEach((doc) => {
+
+                        if (doc.data().Servicio == "YouTube") {
+                            var tbody = document.querySelector('.tbody')
+                            var tr = document.createElement('tr')
+                            var nombre = document.createElement('th')
+                            var correo = document.createElement('th')
+                            var cuentaPadre = document.createElement('th')
+                            var fecha = document.createElement('th')
+                            var th_servicio = document.createElement('th')
+                            var div_servicio = document.createElement('div')
+                            var img_servicio = document.createElement('img')
+                            var th_estado = document.createElement('th')
+                            var estado = document.createElement('p')
+
+                            nombre.textContent = doc.data().Nombre
+                            correo.textContent = doc.data().Correo
+                            cuentaPadre.textContent = doc.data().Correo_Padre
+                            fecha.textContent = doc.data().Fecha
+                            img_servicio.src = "/assets/logo_youtube.png"
+                            estado.textContent = doc.data().Estado
+
+                            div_servicio.className = "servicio"
+                            estado.className = doc.data().Estado.toLowerCase()
+                            estado.style.cursor = "auto"
+
+
+                            tbody.appendChild(tr)
+                            tr.appendChild(nombre)
+                            tr.appendChild(correo)
+                            tr.appendChild(cuentaPadre)
+                            tr.appendChild(fecha)
+                            tr.appendChild(th_servicio)
+                            tr.appendChild(th_estado)
+                            th_servicio.appendChild(div_servicio)
+                            div_servicio.appendChild(img_servicio)
+                            th_estado.appendChild(estado)
+                        }
+
+                        let servicios = doc.data().Servicio.split(", ")
+
+                        if (servicios.length > 1) {
+                            for (var i = 0; i < servicios.length; i++) {
+                                if (servicios[i] == "YouTube") {
+                                    var tbody = document.querySelector('.tbody')
+                                    var tr = document.createElement('tr')
+                                    var nombre = document.createElement('th')
+                                    var correo = document.createElement('th')
+                                    var cuentaPadre = document.createElement('th')
+                                    var fecha = document.createElement('th')
+                                    var th_servicio = document.createElement('th')
+                                    var div_servicio = document.createElement('div')
+                                    var img_servicio = document.createElement('img')
+                                    var th_estado = document.createElement('th')
+                                    var estado = document.createElement('p')
+
+                                    nombre.textContent = doc.data().Nombre
+                                    correo.textContent = doc.data().Correo
+                                    cuentaPadre.textContent = doc.data().Correo_Padre
+                                    fecha.textContent = doc.data().Fecha
+                                    img_servicio.src = "/assets/logo_youtube.png"
+                                    estado.textContent = doc.data().Estado
+
+                                    div_servicio.className = "servicio"
+                                    estado.className = doc.data().Estado.toLowerCase()
+                                    estado.style.cursor = "auto"
+
+
+                                    tbody.appendChild(tr)
+                                    tr.appendChild(nombre)
+                                    tr.appendChild(correo)
+                                    tr.appendChild(cuentaPadre)
+                                    tr.appendChild(fecha)
+                                    tr.appendChild(th_servicio)
+                                    tr.appendChild(th_estado)
+                                    th_servicio.appendChild(div_servicio)
+                                    div_servicio.appendChild(img_servicio)
+                                    th_estado.appendChild(estado)
+                                }
+                            }
+                        }
+
+                    })
+                })
         });
 
         directv.addEventListener("click", () => {
             service.style.display = "none";
             table.style.display = "";
+
+            var tbody = document.querySelector('.tbody')
+            tbody.innerHTML = ""
+
+            getDocs(collection(db, "Users", "SUw3PRfA", "Private_Data"))
+                .then((querySnapshot) => {
+                    querySnapshot.forEach((doc) => {
+
+                        if (doc.data().Servicio == "DirecTV") {
+                            var tbody = document.querySelector('.tbody')
+                            var tr = document.createElement('tr')
+                            var nombre = document.createElement('th')
+                            var correo = document.createElement('th')
+                            var cuentaPadre = document.createElement('th')
+                            var fecha = document.createElement('th')
+                            var th_servicio = document.createElement('th')
+                            var div_servicio = document.createElement('div')
+                            var img_servicio = document.createElement('img')
+                            var th_estado = document.createElement('th')
+                            var estado = document.createElement('p')
+
+                            nombre.textContent = doc.data().Nombre
+                            correo.textContent = doc.data().Correo
+                            cuentaPadre.textContent = doc.data().Correo_Padre
+                            fecha.textContent = doc.data().Fecha
+                            img_servicio.src = "/assets/logo_directv.png"
+                            estado.textContent = doc.data().Estado
+
+                            div_servicio.className = "servicio"
+                            estado.className = doc.data().Estado.toLowerCase()
+                            estado.style.cursor = "auto"
+
+
+                            tbody.appendChild(tr)
+                            tr.appendChild(nombre)
+                            tr.appendChild(correo)
+                            tr.appendChild(cuentaPadre)
+                            tr.appendChild(fecha)
+                            tr.appendChild(th_servicio)
+                            tr.appendChild(th_estado)
+                            th_servicio.appendChild(div_servicio)
+                            div_servicio.appendChild(img_servicio)
+                            th_estado.appendChild(estado)
+                        }
+
+                        let servicios = doc.data().Servicio.split(", ")
+
+                        if (servicios.length > 1) {
+                            for (var i = 0; i < servicios.length; i++) {
+                                if (servicios[i] == "DirecTV") {
+                                    var tbody = document.querySelector('.tbody')
+                                    var tr = document.createElement('tr')
+                                    var nombre = document.createElement('th')
+                                    var correo = document.createElement('th')
+                                    var cuentaPadre = document.createElement('th')
+                                    var fecha = document.createElement('th')
+                                    var th_servicio = document.createElement('th')
+                                    var div_servicio = document.createElement('div')
+                                    var img_servicio = document.createElement('img')
+                                    var th_estado = document.createElement('th')
+                                    var estado = document.createElement('p')
+
+                                    nombre.textContent = doc.data().Nombre
+                                    correo.textContent = doc.data().Correo
+                                    cuentaPadre.textContent = doc.data().Correo_Padre
+                                    fecha.textContent = doc.data().Fecha
+                                    img_servicio.src = "/assets/logo_directv.png"
+                                    estado.textContent = doc.data().Estado
+
+                                    div_servicio.className = "servicio"
+                                    estado.className = doc.data().Estado.toLowerCase()
+                                    estado.style.cursor = "auto"
+
+
+                                    tbody.appendChild(tr)
+                                    tr.appendChild(nombre)
+                                    tr.appendChild(correo)
+                                    tr.appendChild(cuentaPadre)
+                                    tr.appendChild(fecha)
+                                    tr.appendChild(th_servicio)
+                                    tr.appendChild(th_estado)
+                                    th_servicio.appendChild(div_servicio)
+                                    div_servicio.appendChild(img_servicio)
+                                    th_estado.appendChild(estado)
+                                }
+                            }
+                        }
+
+                    })
+                })
         });
 
         disney_prem.addEventListener("click", () => {
             service.style.display = "none";
             table.style.display = "";
+
+            var tbody = document.querySelector('.tbody')
+            tbody.innerHTML = ""
+
+            getDocs(collection(db, "Users", "SUw3PRfA", "Private_Data"))
+                .then((querySnapshot) => {
+                    querySnapshot.forEach((doc) => {
+
+                        if (doc.data().Servicio == "Disney+ Premium") {
+                            var tbody = document.querySelector('.tbody')
+                            var tr = document.createElement('tr')
+                            var nombre = document.createElement('th')
+                            var correo = document.createElement('th')
+                            var cuentaPadre = document.createElement('th')
+                            var fecha = document.createElement('th')
+                            var th_servicio = document.createElement('th')
+                            var div_servicio = document.createElement('div')
+                            var img_servicio = document.createElement('img')
+                            var th_estado = document.createElement('th')
+                            var estado = document.createElement('p')
+
+                            nombre.textContent = doc.data().Nombre
+                            correo.textContent = doc.data().Correo
+                            cuentaPadre.textContent = doc.data().Correo_Padre
+                            fecha.textContent = doc.data().Fecha
+                            img_servicio.src = "/assets/logo_disneypremium.png"
+                            estado.textContent = doc.data().Estado
+
+                            div_servicio.className = "servicio"
+                            estado.className = doc.data().Estado.toLowerCase()
+                            estado.style.cursor = "auto"
+
+
+                            tbody.appendChild(tr)
+                            tr.appendChild(nombre)
+                            tr.appendChild(correo)
+                            tr.appendChild(cuentaPadre)
+                            tr.appendChild(fecha)
+                            tr.appendChild(th_servicio)
+                            tr.appendChild(th_estado)
+                            th_servicio.appendChild(div_servicio)
+                            div_servicio.appendChild(img_servicio)
+                            th_estado.appendChild(estado)
+                        }
+
+                        let servicios = doc.data().Servicio.split(", ")
+
+                        if (servicios.length > 1) {
+                            for (var i = 0; i < servicios.length; i++) {
+                                if (servicios[i] == "Disney+ Premium") {
+                                    var tbody = document.querySelector('.tbody')
+                                    var tr = document.createElement('tr')
+                                    var nombre = document.createElement('th')
+                                    var correo = document.createElement('th')
+                                    var cuentaPadre = document.createElement('th')
+                                    var fecha = document.createElement('th')
+                                    var th_servicio = document.createElement('th')
+                                    var div_servicio = document.createElement('div')
+                                    var img_servicio = document.createElement('img')
+                                    var th_estado = document.createElement('th')
+                                    var estado = document.createElement('p')
+
+                                    nombre.textContent = doc.data().Nombre
+                                    correo.textContent = doc.data().Correo
+                                    cuentaPadre.textContent = doc.data().Correo_Padre
+                                    fecha.textContent = doc.data().Fecha
+                                    img_servicio.src = "/assets/logo_disneypremium.png"
+                                    estado.textContent = doc.data().Estado
+
+                                    div_servicio.className = "servicio"
+                                    estado.className = doc.data().Estado.toLowerCase()
+                                    estado.style.cursor = "auto"
+
+
+                                    tbody.appendChild(tr)
+                                    tr.appendChild(nombre)
+                                    tr.appendChild(correo)
+                                    tr.appendChild(cuentaPadre)
+                                    tr.appendChild(fecha)
+                                    tr.appendChild(th_servicio)
+                                    tr.appendChild(th_estado)
+                                    th_servicio.appendChild(div_servicio)
+                                    div_servicio.appendChild(img_servicio)
+                                    th_estado.appendChild(estado)
+                                }
+                            }
+                        }
+
+                    })
+                })
         });
 
         crunchyroll.addEventListener("click", () => {
             service.style.display = "none";
             table.style.display = "";
+
+            var tbody = document.querySelector('.tbody')
+            tbody.innerHTML = ""
+
+            getDocs(collection(db, "Users", "SUw3PRfA", "Private_Data"))
+                .then((querySnapshot) => {
+                    querySnapshot.forEach((doc) => {
+
+                        if (doc.data().Servicio == "Crunchyroll") {
+                            var tbody = document.querySelector('.tbody')
+                            var tr = document.createElement('tr')
+                            var nombre = document.createElement('th')
+                            var correo = document.createElement('th')
+                            var cuentaPadre = document.createElement('th')
+                            var fecha = document.createElement('th')
+                            var th_servicio = document.createElement('th')
+                            var div_servicio = document.createElement('div')
+                            var img_servicio = document.createElement('img')
+                            var th_estado = document.createElement('th')
+                            var estado = document.createElement('p')
+
+                            nombre.textContent = doc.data().Nombre
+                            correo.textContent = doc.data().Correo
+                            cuentaPadre.textContent = doc.data().Correo_Padre
+                            fecha.textContent = doc.data().Fecha
+                            img_servicio.src = "/assets/logo_crunchyroll.png"
+                            estado.textContent = doc.data().Estado
+
+                            div_servicio.className = "servicio"
+                            estado.className = doc.data().Estado.toLowerCase()
+                            estado.style.cursor = "auto"
+
+
+                            tbody.appendChild(tr)
+                            tr.appendChild(nombre)
+                            tr.appendChild(correo)
+                            tr.appendChild(cuentaPadre)
+                            tr.appendChild(fecha)
+                            tr.appendChild(th_servicio)
+                            tr.appendChild(th_estado)
+                            th_servicio.appendChild(div_servicio)
+                            div_servicio.appendChild(img_servicio)
+                            th_estado.appendChild(estado)
+                        }
+
+                        let servicios = doc.data().Servicio.split(", ")
+
+                        if (servicios.length > 1) {
+                            for (var i = 0; i < servicios.length; i++) {
+                                if (servicios[i] == "Crunchyroll") {
+                                    var tbody = document.querySelector('.tbody')
+                                    var tr = document.createElement('tr')
+                                    var nombre = document.createElement('th')
+                                    var correo = document.createElement('th')
+                                    var cuentaPadre = document.createElement('th')
+                                    var fecha = document.createElement('th')
+                                    var th_servicio = document.createElement('th')
+                                    var div_servicio = document.createElement('div')
+                                    var img_servicio = document.createElement('img')
+                                    var th_estado = document.createElement('th')
+                                    var estado = document.createElement('p')
+
+                                    nombre.textContent = doc.data().Nombre
+                                    correo.textContent = doc.data().Correo
+                                    cuentaPadre.textContent = doc.data().Correo_Padre
+                                    fecha.textContent = doc.data().Fecha
+                                    img_servicio.src = "/assets/logo_crunchyroll.png"
+                                    estado.textContent = doc.data().Estado
+
+                                    div_servicio.className = "servicio"
+                                    estado.className = doc.data().Estado.toLowerCase()
+                                    estado.style.cursor = "auto"
+
+
+                                    tbody.appendChild(tr)
+                                    tr.appendChild(nombre)
+                                    tr.appendChild(correo)
+                                    tr.appendChild(cuentaPadre)
+                                    tr.appendChild(fecha)
+                                    tr.appendChild(th_servicio)
+                                    tr.appendChild(th_estado)
+                                    th_servicio.appendChild(div_servicio)
+                                    div_servicio.appendChild(img_servicio)
+                                    th_estado.appendChild(estado)
+                                }
+                            }
+                        }
+
+                    })
+                })
         });
 
         vix.addEventListener("click", () => {
             service.style.display = "none";
             table.style.display = "";
+
+            var tbody = document.querySelector('.tbody')
+            tbody.innerHTML = ""
+
+            getDocs(collection(db, "Users", "SUw3PRfA", "Private_Data"))
+                .then((querySnapshot) => {
+                    querySnapshot.forEach((doc) => {
+
+                        if (doc.data().Servicio == "Vix") {
+                            var tbody = document.querySelector('.tbody')
+                            var tr = document.createElement('tr')
+                            var nombre = document.createElement('th')
+                            var correo = document.createElement('th')
+                            var cuentaPadre = document.createElement('th')
+                            var fecha = document.createElement('th')
+                            var th_servicio = document.createElement('th')
+                            var div_servicio = document.createElement('div')
+                            var img_servicio = document.createElement('img')
+                            var th_estado = document.createElement('th')
+                            var estado = document.createElement('p')
+
+                            nombre.textContent = doc.data().Nombre
+                            correo.textContent = doc.data().Correo
+                            cuentaPadre.textContent = doc.data().Correo_Padre
+                            fecha.textContent = doc.data().Fecha
+                            img_servicio.src = "/assets/logo_vix.jpg"
+                            estado.textContent = doc.data().Estado
+
+                            div_servicio.className = "servicio"
+                            estado.className = doc.data().Estado.toLowerCase()
+                            estado.style.cursor = "auto"
+
+
+                            tbody.appendChild(tr)
+                            tr.appendChild(nombre)
+                            tr.appendChild(correo)
+                            tr.appendChild(cuentaPadre)
+                            tr.appendChild(fecha)
+                            tr.appendChild(th_servicio)
+                            tr.appendChild(th_estado)
+                            th_servicio.appendChild(div_servicio)
+                            div_servicio.appendChild(img_servicio)
+                            th_estado.appendChild(estado)
+                        }
+
+                        let servicios = doc.data().Servicio.split(", ")
+
+                        if (servicios.length > 1) {
+                            for (var i = 0; i < servicios.length; i++) {
+                                if (servicios[i] == "Vix") {
+                                    var tbody = document.querySelector('.tbody')
+                                    var tr = document.createElement('tr')
+                                    var nombre = document.createElement('th')
+                                    var correo = document.createElement('th')
+                                    var cuentaPadre = document.createElement('th')
+                                    var fecha = document.createElement('th')
+                                    var th_servicio = document.createElement('th')
+                                    var div_servicio = document.createElement('div')
+                                    var img_servicio = document.createElement('img')
+                                    var th_estado = document.createElement('th')
+                                    var estado = document.createElement('p')
+
+                                    nombre.textContent = doc.data().Nombre
+                                    correo.textContent = doc.data().Correo
+                                    cuentaPadre.textContent = doc.data().Correo_Padre
+                                    fecha.textContent = doc.data().Fecha
+                                    img_servicio.src = "/assets/logo_vix.jpg"
+                                    estado.textContent = doc.data().Estado
+
+                                    div_servicio.className = "servicio"
+                                    estado.className = doc.data().Estado.toLowerCase()
+                                    estado.style.cursor = "auto"
+
+
+                                    tbody.appendChild(tr)
+                                    tr.appendChild(nombre)
+                                    tr.appendChild(correo)
+                                    tr.appendChild(cuentaPadre)
+                                    tr.appendChild(fecha)
+                                    tr.appendChild(th_servicio)
+                                    tr.appendChild(th_estado)
+                                    th_servicio.appendChild(div_servicio)
+                                    div_servicio.appendChild(img_servicio)
+                                    th_estado.appendChild(estado)
+                                }
+                            }
+                        }
+
+                    })
+                })
         });
 
         // back window 1

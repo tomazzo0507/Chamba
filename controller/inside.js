@@ -510,19 +510,19 @@ onAuthStateChanged(auth, (user) => {
                             if (servicios[i] == "Prime Video") {
                                 img_servicio.src = "/assets/logo_prime.png"
                             }
-    
+
                             if (servicios[i] == "Netflix") {
                                 img_servicio.src = "/assets/logo_netflix.png"
                             }
-    
+
                             if (servicios[i] == "Spotify") {
                                 img_servicio.src = "/assets/logo_spotify.jpg"
                             }
-    
+
                             if (servicios[i] == "Vix") {
                                 img_servicio.src = "/assets/logo_vix.jpg"
                             }
-    
+
                             if (servicios[i] == "HBO") {
                                 img_servicio.src = "/assets/logo_hbo.png"
                             }
@@ -530,32 +530,32 @@ onAuthStateChanged(auth, (user) => {
                             if (servicios[i] == "Disney+") {
                                 img_servicio.src = "/assets/logo_disney.jpg"
                             }
-    
+
                             if (servicios[i] == "Disney+ Premium") {
                                 img_servicio.src = "/assets/logo_disneypremium.png"
                             }
-    
+
                             if (servicios[i] == "Paramount+") {
                                 img_servicio.src = "/assets/logo_paramount.png"
                             }
-    
+
                             if (servicios[i] == "DirecTV") {
                                 img_servicio.src = "/assets/logo_directv.png"
                             }
-    
+
                             if (servicios[i] == "Crunchyroll") {
                                 img_servicio.src = "/assets/logo_crunchyroll.png"
                             }
-    
+
                             if (servicios[i] == "YouTube") {
                                 img_servicio.src = "/assets/logo_youtube.png"
                             }
-    
+
                             if (servicios[i] == "Apple TV") {
                                 img_servicio.src = "/assets/logo_apple.png"
                             }
 
-                            if(servicios.length > 6){
+                            if (servicios.length > 6) {
                                 cont_servicio.style.display = "grid"
                                 cont_servicio.style.gridTemplateColumns = "1fr 1fr 1fr 1fr 1fr 1fr"
                             }
@@ -617,10 +617,10 @@ onAuthStateChanged(auth, (user) => {
 
                     }
 
-                    if (doc.data().Estado == "Activo") {
-                        p_estado.textContent = doc.data().Estado
-                        p_estado.className = "activo"
-                    }
+
+                    p_estado.textContent = doc.data().Estado
+                    p_estado.className = doc.data().Estado.toLowerCase()
+
 
                     tbody.appendChild(tr)
                     tr.appendChild(nombre)
